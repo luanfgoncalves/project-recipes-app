@@ -1,13 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import AppReceitasContext from './AppReceitasContext';
 
 function AppReceitasProvider({ children }) {
-  const [, ] = useState([]);
-  const [, ] = useState([]);
+  // const [,] = useState([]);
 
   const valueContext = {
-
+    disabledButton,
+    setDisabledButton,
+    userEmail,
+    setUserEmail,
+    password,
+    setPassword,
   };
 
   return (
