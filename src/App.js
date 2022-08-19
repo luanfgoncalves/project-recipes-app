@@ -1,9 +1,9 @@
 import React from 'react';
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import './App.css';
-// import rockGlass from './images/rockGlass.svg';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
+import Login from './pages/Login';
 import DoneRecipes from './pages/DoneRecipes';
 import Drinks from './pages/Drinks';
 import FavoriteRecipes from './pages/FavoriteRecipes';
@@ -17,7 +17,7 @@ function App() {
     <div className="meals">
       <BrowserRouter>
         <Switch>
-          {/* <Route exact path="/" component={ Login } /> */}
+          <Route path="/" exact component={ Login } />
           <Route exact path="/foods" component={ Foods } />
           <Route exact path="/foods/:id" component={ Recipes } />
           <Route exact path="/foods/:id/in-progress" component={ Recipes } />
