@@ -1,38 +1,28 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 function Login() {
   const [disabledButton, setDisabledButton] = useState(true);
   const [userEmail, setUserEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const isButtonDisabled = () => {
+  useEffect(() => {
     const check = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]/i;
     const minNumber = 6;
-    if (check.test(userEmail) && password.length >= minNumber) {
+    if (check.test(userEmail) && password.length > minNumber) {
       setDisabledButton(false);
     } else {
       setDisabledButton(true);
     }
-  };
+  }, [userEmail, password]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    console.log(value);
     if (name === 'email') {
       setUserEmail(value);
     } else {
       setPassword(value);
     }
-    isButtonDisabled();
   };
-
-  // const isButtonDisabled = ({ target }) => {
-  //   const check = /^[a-z0-9.]+@[a-z0-9]+\.[a-z]/i;
-  //   const minNumber = 6;
-  //   if (check.test(userEmail) && password.length > minNumber) {
-  //     setDisabledButton('false');
-  //   }
-  // };
 
   return (
     <div>
