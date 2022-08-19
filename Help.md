@@ -17,6 +17,6 @@
 
 master
     /main-group-18
-        /main-group-18-release
-            /main-group-18-req1-5
+        /main-group-18-release  ok
+            /main-group-18-req1-5  ok
             /main-group-18-req6-7
