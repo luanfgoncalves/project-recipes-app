@@ -6,9 +6,10 @@
 footer {
   background-color: blue;
   bottom: 0;
-  height: 100px;
+  left: 0;
   line-height: 100px;
-  position: fixed;
+  position: absolute;
+  right: 0;
   text-align: center;
   width: 100vw;
 }

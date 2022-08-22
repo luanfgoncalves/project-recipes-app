@@ -1,4 +1,6 @@
 import React from 'react';
+import drinkIcon from '../images/drinkIcon.svg';
+import mealIcon from '../images/mealIcon.svg';
 
 function Footer() {
   return (
@@ -10,10 +12,9 @@ function Footer() {
         <a
           href="/drinks"
           data-testid="drinks-bottom-btn"
-          src="./images/drinkIcon.svg"
         >
           <img
-            src="./images/drinkIcon.svg"
+            src={ drinkIcon }
             alt="icon drink"
           />
         </a>
@@ -21,10 +22,9 @@ function Footer() {
         <a
           href="/foods"
           data-testid="food-bottom-btn"
-          src="./images/mealIcon.svg"
         >
           <img
-            src="./images/mealIcon.svg"
+            src={ mealIcon }
             alt="icon food"
           />
         </a>
