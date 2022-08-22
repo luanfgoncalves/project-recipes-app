@@ -10,7 +10,6 @@ function AppReceitasProvider({ children }) {
     foodSearchReturn,
     setFoodSearchReturn,
     drinkSearchReturn,
-    setDrinkSearchReturn,
   };
 
   return (
