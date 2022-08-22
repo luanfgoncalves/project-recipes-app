@@ -3,15 +3,14 @@ import PropTypes from 'prop-types';
 import AppReceitasContext from './AppReceitasContext';
 
 function AppReceitasProvider({ children }) {
-  // const [,] = useState([]);
+  const [foodSearchReturn, setFoodSearchReturn] = useState([]);
+  const [drinkSearchReturn, setDrinkSearchReturn] = useState([]);
 
   const valueContext = {
-    disabledButton,
-    setDisabledButton,
-    userEmail,
-    setUserEmail,
-    password,
-    setPassword,
+    foodSearchReturn,
+    setFoodSearchReturn,
+    drinkSearchReturn,
+    setDrinkSearchReturn,
   };
 
   return (
