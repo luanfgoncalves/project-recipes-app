@@ -8,8 +8,8 @@ function AppReceitasProvider({ children }) {
   const valueContext = {
     disabledButton,
     setDisabledButton,
-    userEmail,
-    setUserEmail,
+    email,
+    setEmail,
     password,
     setPassword,
   };
