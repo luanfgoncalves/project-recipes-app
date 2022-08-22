@@ -24,19 +24,21 @@ const Header = ({ title }) => {
       <Link to="/profile">
         <img
           src={ profileIcon }
-          alt="Imagem de perfil"
+          alt="Ícone de perfil"
           data-testid="profile-top-btn"
         />
       </Link>
 
       {(title === 'Foods' || title === 'Drinks')
-    && <img
-      src={ searchIcon }
-      alt="Imagem de perfil"
-      data-testid="search-top-btn"
-    />}
-
-      <button type="button" onClick={ handleClick }>Pesquisar</button>
+    && (
+      <input
+        src={ searchIcon }
+        type="image"
+        onClick={ handleClick }
+        data-testid="search-top-btn"
+        alt="Ícone de pesquisa"
+      />
+    )}
 
       { displaySearchBar && <SearchBar /> }
 
