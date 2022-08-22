@@ -1,32 +1,44 @@
-import React, { useState } from 'react';
-import PropTypes from 'prop-types';
+import React, { useContext, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import getFoodRecipes from '../services/foodRecipesAPI';
 import getDrinkRecipes from '../services/drinkRecipesAPI';
+import AppReceitasContext from '../context/AppReceitasContext';
 
-const SearchBar = (props) => {
+const SearchBar = () => {
   const [searchFilter, setSearchFilter] = useState('');
+  const [searchContent, setSearchContent] = useState('');
 
-  const handleClick = ({ target }) => setSearchFilter(target.value);
+  const history = useHistory();
 
-  const handleSearch = () => {
-    const {
-      history: { location: { pathname } },
-      setFoodSearchReturn,
-      setDrinkSearchReturn,
-    } = props;
+  const { setFoodSearchReturn, setDrinkSearchReturn } = useContext(AppReceitasContext);
+
+  const handleClick = ({ target }) => {
+    setSearchFilter(target.value);
+  };
+
+  const handleChange = ({ target }) => {
+    setSearchContent(target.value);
+  };
+
+  const handleSearch = async () => {
+    const { pathname } = history.location;
 
     if (pathname === '/foods') {
-      try {
-        console.log(getFoodRecipes(searchFilter));
-      } catch (err) {
-        global.alert(err.message);
+      if (searchFilter === 'firstLetter' && searchContent.length === 0) {
+        global.alert('Your search must have 1 (one) character');
+      } else if (searchFilter === 'firstLetter' && searchContent.length > 1) {
+        global.alert('Your search must have only 1 (one) character');
+      } else {
+        const foodList = await getFoodRecipes(searchFilter, searchContent);
+        setFoodSearchReturn(foodList);
       }
+    } else if (searchFilter === 'firstLetter' && searchContent.length === 0) {
+      global.alert('Your search must have 1 (one) character');
+    } else if (searchFilter === 'firstLetter' && searchContent.length > 1) {
+      global.alert('Your search must have only 1 (one) character');
     } else {
-      try {
-        getDrinkRecipes(searchFilter);
-      } catch (err) {
-        global.alert(err.message);
-      }
+      const drinkList = await getDrinkRecipes(searchFilter, searchContent);
+      setDrinkSearchReturn(drinkList);
     }
   };
 
@@ -37,6 +49,8 @@ const SearchBar = (props) => {
           type="text"
           data-testid="search-input"
           id="search-input"
+          value={ searchContent }
+          onChange={ handleChange }
         />
       </label>
       <div>
@@ -82,16 +96,6 @@ const SearchBar = (props) => {
       </div>
     </div>
   );
-};
-
-SearchBar.propTypes = {
-  history: PropTypes.shape({
-    location: PropTypes.shape({
-      pathname: PropTypes.string,
-    }),
-  }).isRequired,
-  setFoodSearchReturn: PropTypes.func.isRequired,
-  setDrinkSearchReturn: PropTypes.func.isRequired,
 };
 
 export default SearchBar;

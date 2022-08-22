@@ -8,7 +8,7 @@ const getFoodRecipes = async (searchFilter, searchContent) => {
   const response = await fetch(`${END_POINTS[searchFilter]}${searchContent}`);
   const data = await response.json();
 
-  return data;
+  return data.meals;
 };
 
 export default getFoodRecipes;
