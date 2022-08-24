@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import { Redirect } from 'react-router-dom';
+import Footer from '../components/Footer';
 import Header from '../components/Header';
 import RecipeCard from '../components/RecipeCard';
 import AppReceitasContext from '../context/AppReceitasContext';
@@ -26,6 +27,7 @@ const Foods = () => {
           ))
         )
       }
+      <Footer />
     </div>
   );
 };
