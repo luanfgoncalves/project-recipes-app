@@ -1,15 +1,29 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import AppReceitasContext from './AppReceitasContext';
+import getFoodRecipes from '../services/foodRecipesAPI';
+import getDrinkRecipes from '../services/drinkRecipesAPI';
 
 function AppReceitasProvider({ children }) {
-  const [foodSearchReturn, setFoodSearchReturn] = useState([]);
-  const [drinkSearchReturn, setDrinkSearchReturn] = useState([]);
+  const [searchResult, setSearchResult] = useState([]);
+
+  const getSearchResult = async (pathname, searchFilter, searchContent) => {
+    if (searchFilter === 'firstLetter' && searchContent.length === 0) {
+      global.alert('Your search must have at least 1 (one) character');
+    } else if (searchFilter === 'firstLetter' && searchContent.length > 1) {
+      global.alert('Your search must have only 1 (one) character');
+    } else if (pathname === '/foods') {
+      const foodList = await getFoodRecipes(searchFilter, searchContent);
+      setSearchResult(foodList);
+    } else {
+      const drinkList = await getDrinkRecipes(searchFilter, searchContent);
+      setSearchResult(drinkList);
+    }
+  };
 
   const valueContext = {
-    foodSearchReturn,
-    setFoodSearchReturn,
-    drinkSearchReturn,
+    searchResult,
+    getSearchResult,
   };
 
   return (

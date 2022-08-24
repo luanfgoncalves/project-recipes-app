@@ -1,7 +1,5 @@
 import React, { useContext, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import getFoodRecipes from '../services/foodRecipesAPI';
-import getDrinkRecipes from '../services/drinkRecipesAPI';
 import AppReceitasContext from '../context/AppReceitasContext';
 
 const SearchBar = () => {
@@ -9,8 +7,7 @@ const SearchBar = () => {
   const [searchContent, setSearchContent] = useState('');
 
   const history = useHistory();
-
-  const { setFoodSearchReturn, setDrinkSearchReturn } = useContext(AppReceitasContext);
+  const { getSearchResult } = useContext(AppReceitasContext);
 
   const handleClick = ({ target }) => {
     setSearchFilter(target.value);
@@ -20,26 +17,8 @@ const SearchBar = () => {
     setSearchContent(target.value);
   };
 
-  const handleSearch = async () => {
-    const { pathname } = history.location;
-
-    if (pathname === '/foods') {
-      if (searchFilter === 'firstLetter' && searchContent.length === 0) {
-        global.alert('Your search must have 1 (one) character');
-      } else if (searchFilter === 'firstLetter' && searchContent.length > 1) {
-        global.alert('Your search must have only 1 (one) character');
-      } else {
-        const foodList = await getFoodRecipes(searchFilter, searchContent);
-        setFoodSearchReturn(foodList);
-      }
-    } else if (searchFilter === 'firstLetter' && searchContent.length === 0) {
-      global.alert('Your search must have 1 (one) character');
-    } else if (searchFilter === 'firstLetter' && searchContent.length > 1) {
-      global.alert('Your search must have only 1 (one) character');
-    } else {
-      const drinkList = await getDrinkRecipes(searchFilter, searchContent);
-      setDrinkSearchReturn(drinkList);
-    }
+  const handleSearch = () => {
+    getSearchResult(history.location.pathname, searchFilter, searchContent);
   };
 
   return (
@@ -90,7 +69,7 @@ const SearchBar = () => {
         <input
           type="button"
           data-testid="exec-search-btn"
-          value="Buscar"
+          value="Search"
           onClick={ handleSearch }
         />
       </div>
