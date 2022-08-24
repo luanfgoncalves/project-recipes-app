@@ -27,7 +27,7 @@ const Drinks = () => {
           ))
         )
       }
-    <Footer />
+      <Footer />
     </div>
   );
 };

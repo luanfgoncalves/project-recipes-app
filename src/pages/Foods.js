@@ -27,7 +27,7 @@ const Foods = () => {
           ))
         )
       }
-    <Footer />
+      <Footer />
     </div>
   );
 };
