@@ -5,6 +5,7 @@ import renderWithRouter from "../helpers/renderWithRouter";
 import Header from '../components/Header';
 import Foods from '../pages/Foods';
 import Profile from '../pages/Profile';
+import AppReceitasProvider from '../context/AppReceitasProvider';
 
 describe('Realiza os testes relacionados ao componente Header', () => {
   it('Verifica se o usuário é redirecionado para a página de perfil ao clicar no respectivo ícone', () => {
@@ -24,7 +25,10 @@ describe('Realiza os testes relacionados ao componente Header', () => {
   });
 
   it('Verifica se o botão de Pesquisar habilita/desabilita a barra de pesquisa', () => {
-    renderWithRouter(<Foods />);
+    renderWithRouter(
+    <AppReceitasProvider>
+      <Foods />
+    </AppReceitasProvider>);
 
     const searchBtn = screen.getByTestId('search-top-btn');
     expect(searchBtn).toBeDefined();
@@ -39,7 +43,11 @@ describe('Realiza os testes relacionados ao componente Header', () => {
   });
 
   it('Verifica se o ícone de pesquisa é exibido na página Foods', () => {
-    renderWithRouter(<Foods />);
+    renderWithRouter(
+      <AppReceitasProvider>
+        <Foods />
+      </AppReceitasProvider>
+    );
 
     const searchBtn = screen.getByTestId('search-top-btn');
     expect(searchBtn).toBeInTheDocument();
