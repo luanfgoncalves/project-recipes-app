@@ -17,7 +17,7 @@ describe('Realiza os testes relacionados ao componente Header', () => {
   });
 
   it('Verifica a renderização do header em diferentes páginas', () => {
-    const { history } = renderWithRouter(<Profile />);
+    renderWithRouter(<Profile />);
 
     const profileIcon = screen.getByTestId('profile-top-btn');
     expect(profileIcon).toBeDefined();

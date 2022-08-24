@@ -70,6 +70,7 @@ const SearchBar = () => {
           type="button"
           data-testid="exec-search-btn"
           value="Search"
+          disabled={ !searchFilter }
           onClick={ handleSearch }
         />
       </div>

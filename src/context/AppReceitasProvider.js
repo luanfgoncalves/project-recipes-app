@@ -14,10 +14,10 @@ function AppReceitasProvider({ children }) {
       global.alert('Your search must have only 1 (one) character');
     } else if (pathname === '/foods') {
       const foodList = await getFoodRecipes(searchFilter, searchContent);
-      setSearchResult(foodList);
+      setSearchResult(foodList || []);
     } else {
       const drinkList = await getDrinkRecipes(searchFilter, searchContent);
-      setSearchResult(drinkList);
+      setSearchResult(drinkList || []);
     }
   };
 

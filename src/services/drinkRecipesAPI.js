@@ -4,11 +4,19 @@ const END_POINTS = {
   firstLetter: 'https://www.thecocktaildb.com/api/json/v1/1/search.php?f=',
 };
 
-const getDrinkRecipes = async (searchFilter, searchContent) => {
-  const response = await fetch(`${END_POINTS[searchFilter]}${searchContent}`);
-  const data = await response.json();
+const NO_RESULTS_MESSAGE = 'Sorry, we haven\'t found any recipes for these filters.';
 
-  return data;
+const getDrinkRecipes = async (searchFilter, searchContent) => {
+  try {
+    const response = await fetch(`${END_POINTS[searchFilter]}${searchContent}`);
+    const data = await response.json();
+
+    if (!data.drinks) global.alert(NO_RESULTS_MESSAGE);
+
+    return data.drinks;
+  } catch {
+    global.alert(NO_RESULTS_MESSAGE);
+  }
 };
 
 export default getDrinkRecipes;
