@@ -15,6 +15,17 @@
   max-height: 80vh;
 }
 
+.recipe-card {
+  display: flex;
+  flex-direction: row;
+  font-size: 12px;
+}
+
+.recipe-card img {
+  height: 20px;
+  width: 20px;
+}
+
 /*
 #iceLeft {
   animation: clink .8s infinite ease;

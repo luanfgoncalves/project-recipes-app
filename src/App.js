@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, BrowserRouter, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
@@ -11,11 +11,12 @@ import Foods from './pages/Foods';
 import Profile from './pages/Profile';
 
 import Recipes from './components/Recipes';
+import AppReceitasProvider from './context/AppReceitasProvider';
 
 function App() {
   return (
-    <div className="meals">
-      <BrowserRouter>
+    <AppReceitasProvider>
+      <div className="meals">
         <Switch>
           <Route path="/" exact component={ Login } />
           <Route exact path="/foods" component={ Foods } />
@@ -28,8 +29,8 @@ function App() {
           <Route exact path="/done-recipes" component={ DoneRecipes } />
           <Route exact path="/favorite-recipes" component={ FavoriteRecipes } />
         </Switch>
-      </BrowserRouter>
-    </div>
+      </div>
+    </AppReceitasProvider>
   );
 }
 
