@@ -7,6 +7,9 @@ import getDrinkRecipes from '../services/drinkRecipesAPI';
 function AppReceitasProvider({ children }) {
   const [searchResult, setSearchResult] = useState([]);
 
+  const [recipe, setRecipe] = useState([]);
+  const [recipeType, setRecipeType] = useState('');
+
   const getSearchResult = async (pathname, searchFilter, searchContent) => {
     if (searchFilter === 'firstLetter' && searchContent.length === 0) {
       global.alert('Your search must have at least 1 (one) character');
@@ -24,6 +27,10 @@ function AppReceitasProvider({ children }) {
   const valueContext = {
     searchResult,
     getSearchResult,
+    recipe,
+    setRecipe,
+    recipeType,
+    setRecipeType,
   };
 
   return (
