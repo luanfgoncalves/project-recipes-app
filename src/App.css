@@ -93,3 +93,9 @@ footer {
     transform: rotate(-10deg);
   }
 }
+
+/* classe para img recipes.js */
+.recipes-imgs {
+  height: 80%;
+  width: 80%;
+}
