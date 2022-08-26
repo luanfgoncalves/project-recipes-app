@@ -1,28 +1,39 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useContext } from 'react';
 // import { useLocation } from 'react-router-dom';
 import fetchCategoryFood from '../services/fetchCategoryFood';
+import { filterFood } from '../services/fetchFilter';
+import AppReceitasContext from '../context/AppReceitasContext';
 
 function CategoryFood() {
-  const [food, setFood] = useState([]);
+  const { setFood, foodCategory, setFoodCategory } = useContext(AppReceitasContext);
   //   const { pathname } = useLocation();
   const numb = 5;
+  const numb2 = 12;
 
   useEffect(() => {
     const apiCategory = async () => {
       const dataFood = await fetchCategoryFood();
-      console.log(dataFood);
-      setFood(dataFood.meals);
+      setFoodCategory(dataFood.meals);
     };
     apiCategory();
   }, []);
+
+  const foodFilter = async (category) => {
+    const dataFood = await filterFood(category.target.innerText);
+    const meals = dataFood.meals.filter((food, index) => index < numb2);
+    console.log(meals);
+    setFood(meals);
+  };
+
   return (
     <>
       {
-        food.slice(0, numb).map((foods) => (
+        foodCategory.slice(0, numb).map((foods) => (
           <button
             data-testid={ `${foods.strCategory}-category-filter` }
             type="button"
             key={ `${foods.strCategory}` }
+            onClick={ (event) => foodFilter(event) }
           >
             { foods.strCategory }
 

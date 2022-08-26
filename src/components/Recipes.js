@@ -1,29 +1,26 @@
-import React, { useEffect, useState } from 'react';
-// import PropTypes from 'prop-types';
-// import { useParams } from 'react-router-dom';
+import React, { useEffect, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import fetchFood from '../services/fetchFood';
 import fetchDrink from '../services/fetchDrink';
 import CategoryFood from './CategoryFood';
 import CategoryDrink from './CategoryDrink';
-// import AppReceitasContext from '../context/AppReceitasContext';
+import AppReceitasContext from '../context/AppReceitasContext';
 
 function Recipes() {
-  // const { food, setFood, drink, setDrink } = useContext(AppReceitasContext);
-  const [food, setFood] = useState([]);
-  const [drink, setDrink] = useState([]);
+  const { food, setFood, drink, setDrink } = useContext(AppReceitasContext);
+
   const numbRecipes = 12;
-  // const { id } = useParams();
-  // const history = useHistory();
   const { pathname } = useLocation();
 
+  const apiRecipes = async () => {
+    const dataFood = await fetchFood();
+    console.log(dataFood);
+    const dataDrink = await fetchDrink();
+    setFood(dataFood.meals);
+    setDrink(dataDrink.drinks);
+  };
+
   useEffect(() => {
-    const apiRecipes = async () => {
-      const dataFood = await fetchFood();
-      const dataDrink = await fetchDrink();
-      setFood(dataFood.meals);
-      setDrink(dataDrink.drinks);
-    };
     apiRecipes();
   }, []);
 
@@ -56,10 +53,25 @@ function Recipes() {
     }
   };
 
+  const clearFilter = (
+    <button
+      type="button"
+      data-testid="All-category-filter"
+      onClick={ () => apiRecipes() }
+    >
+      All
+    </button>
+  );
+
   return (
-    <div>
-      { pathname === '/foods' ? <CategoryFood /> : <CategoryDrink /> }
-      { getRecipes() }
+    <div className="divContainer">
+      <div className="btnCategory">
+        { pathname === '/foods' ? <CategoryFood /> : <CategoryDrink /> }
+        { clearFilter }
+      </div>
+      <div className="imgContainer">
+        { getRecipes() }
+      </div>
     </div>
   );
 }
