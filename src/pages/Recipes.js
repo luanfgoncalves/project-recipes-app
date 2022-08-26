@@ -2,10 +2,10 @@ import React, { useEffect, useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import fetchFood from '../services/fetchFood';
 import fetchDrink from '../services/fetchDrink';
-import CategoryFood from './CategoryFood';
-import CategoryDrink from './CategoryDrink';
+import CategoryFood from '../components/CategoryFood';
+import CategoryDrink from '../components/CategoryDrink';
 import AppReceitasContext from '../context/AppReceitasContext';
-import Header from './Header';
+import Header from '../components/Header';
 
 function Recipes() {
   const { food, setFood, drink, setDrink } = useContext(AppReceitasContext);
