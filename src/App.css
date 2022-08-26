@@ -93,3 +93,31 @@ footer {
     transform: rotate(-10deg);
   }
 }
+
+/* classe para img recipes.js */
+.recipes-imgs {
+  height: 10px;
+  width: 10px;
+}
+
+.divContainer {
+  background-color: gray;
+  height: 860px;
+  width: 340px;
+}
+
+.btnCategory {
+  align-content: flex-end;
+  align-items: flex-end;
+  background-color: rgb(211, 221, 250);
+  display: flex;
+  height: 200px;
+  width: 339px;
+}
+
+.imgContainer {
+  background-color: rgb(250, 158, 158);
+  height: 658px;
+  width: 339px;
+}
+
