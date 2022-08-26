@@ -15,7 +15,7 @@ function CategoryDrink() {
       setDrinkCategory(dataDrink.drinks);
     };
     apiCategory();
-  }, []);
+  }, [setDrinkCategory]);
 
   const drinkFilter = async (category) => {
     const dataDrink = await filterDrink(category.target.innerText);

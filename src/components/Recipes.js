@@ -5,6 +5,7 @@ import fetchDrink from '../services/fetchDrink';
 import CategoryFood from './CategoryFood';
 import CategoryDrink from './CategoryDrink';
 import AppReceitasContext from '../context/AppReceitasContext';
+import Header from './Header';
 
 function Recipes() {
   const { food, setFood, drink, setDrink } = useContext(AppReceitasContext);
@@ -65,6 +66,7 @@ function Recipes() {
 
   return (
     <div className="divContainer">
+      { pathname === '/foods' ? <Header title="Foods" /> : <Header title="Drinks" />}
       <div className="btnCategory">
         { pathname === '/foods' ? <CategoryFood /> : <CategoryDrink /> }
         { clearFilter }

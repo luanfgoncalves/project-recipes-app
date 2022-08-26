@@ -16,7 +16,7 @@ function CategoryFood() {
       setFoodCategory(dataFood.meals);
     };
     apiCategory();
-  }, []);
+  }, [setFoodCategory]);
 
   const foodFilter = async (category) => {
     const dataFood = await filterFood(category.target.innerText);
