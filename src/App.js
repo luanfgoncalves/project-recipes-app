@@ -5,13 +5,14 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Login from './pages/Login';
 import DoneRecipes from './pages/DoneRecipes';
-import Drinks from './pages/Drinks';
+
 import FavoriteRecipes from './pages/FavoriteRecipes';
-import Foods from './pages/Foods';
+
 import Profile from './pages/Profile';
 
-import Recipes from './components/Recipes';
+import Recipes from './pages/Recipes';
 import AppReceitasProvider from './context/AppReceitasProvider';
+import RecipeDetails from './pages/RecipeDetails';
 
 function App() {
   return (
@@ -19,11 +20,11 @@ function App() {
       <div className="meals">
         <Switch>
           <Route path="/" exact component={ Login } />
-          <Route exact path="/foods" component={ Foods } />
-          <Route exact path="/foods/:id" component={ Recipes } />
+          <Route exact path="/foods" component={ Recipes } />
+          <Route exact path="/foods/:id" component={ RecipeDetails } />
           <Route exact path="/foods/:id/in-progress" component={ Recipes } />
-          <Route exact path="/drinks" component={ Drinks } />
-          <Route exact path="/drinks/:id" component={ Recipes } />
+          <Route exact path="/drinks" component={ Recipes } />
+          <Route exact path="/drinks/:id" component={ RecipeDetails } />
           <Route exact path="/drinks/:id/in-progress" component={ Recipes } />
           <Route exact path="/profile" component={ Profile } />
           <Route exact path="/done-recipes" component={ DoneRecipes } />

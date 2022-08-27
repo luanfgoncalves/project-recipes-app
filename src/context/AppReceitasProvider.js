@@ -6,6 +6,13 @@ import getDrinkRecipes from '../services/drinkRecipesAPI';
 
 function AppReceitasProvider({ children }) {
   const [searchResult, setSearchResult] = useState([]);
+  const [food, setFood] = useState([]);
+  const [drink, setDrink] = useState([]);
+  const [drinkCategory, setDrinkCategory] = useState([]);
+  const [foodCategory, setFoodCategory] = useState([]);
+
+  const [recipe, setRecipe] = useState([]);
+  const [recipeType, setRecipeType] = useState('');
 
   const getSearchResult = async (pathname, searchFilter, searchContent) => {
     if (searchFilter === 'firstLetter' && searchContent.length === 0) {
@@ -24,6 +31,18 @@ function AppReceitasProvider({ children }) {
   const valueContext = {
     searchResult,
     getSearchResult,
+    recipe,
+    setRecipe,
+    recipeType,
+    setRecipeType,
+    food,
+    setFood,
+    drink,
+    setDrink,
+    drinkCategory,
+    setDrinkCategory,
+    foodCategory,
+    setFoodCategory,
   };
 
   return (
