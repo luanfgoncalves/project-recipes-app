@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import clipboardCopy from 'clipboard-copy';
+import copy from 'clipboard-copy';
 import { Link } from 'react-router-dom';
 import shareIcon from '../images/shareIcon.svg';
 
@@ -21,7 +21,7 @@ const DoneRecipeCard = ({ recipe, type, index }) => {
   } = recipe;
 
   const handleShare = () => {
-    clipboardCopy(`${PAGE_URL}/${type}/${id}`);
+    copy(`${PAGE_URL}/${type}/${id}`);
     setShowPopup(true);
   };
 
