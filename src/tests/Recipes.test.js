@@ -1,4 +1,4 @@
-/* import React from 'react';
+import React from 'react';
 import { screen, waitFor } from '@testing-library/react';
 import App from '../App';
 import AppReceitasProvider from '../context/AppReceitasProvider';
@@ -38,4 +38,3 @@ describe('Teste de Recipes', () => {
     });
 });
     
- */

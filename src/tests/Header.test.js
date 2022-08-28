@@ -1,4 +1,4 @@
-/* import React from 'react';
+import React from 'react';
 import { screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from "../helpers/renderWithRouter";
@@ -52,4 +52,4 @@ describe('Realiza os testes relacionados ao componente Header', () => {
     const searchBtn = screen.getByTestId('search-top-btn');
     expect(searchBtn).toBeInTheDocument();
   });
-}) */
+})
