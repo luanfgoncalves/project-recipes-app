@@ -4,6 +4,8 @@ import React, { useEffect, useContext } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import AppReceitasContext from '../context/AppReceitasContext';
 import { fetchDrinkApi, fetchMealApi } from '../services/fetchDrinksAndMeals';
+import MealRecomendations from '../components/MealsRecomendations';
+import DrinksRecomendations from '../components/DrinkRecomendations';
 
 const RecipeDetails = () => {
   const {
@@ -73,9 +75,19 @@ const RecipeDetails = () => {
 
   const renderMeals = () => (
     <div>
+
       <h2 data-testid="recipe-title">{recipe.strMeal}</h2>
-      <img data-testid="recipe-photo" src={ recipe.strMealThumb } alt="meal" />
-      <h4 data-testid="recipe-category">{recipe.strCategory}</h4>
+      <figure className="recipe-detail-card">
+        <img
+          className="recipe-detail-img"
+          src={ recipe.strMealThumb }
+          alt={ recipe.strMeal }
+          data-testid="recipe-photo"
+        />
+        <figcaption data-testid="recipe-category">
+          {recipe.strCategory}
+        </figcaption>
+      </figure>
       <p data-testid="instructions">{recipe.strInstructions}</p>
 
       <iframe
@@ -91,32 +103,43 @@ const RecipeDetails = () => {
         {renderIngredients()}
       </ul>
 
-      <div data-testid="recomendation-card">Sou uma recomendação :3</div>
-      <div data-testid="0-recomendation-card">também sou uma recomendação :3</div>
+      {/* <div data-testid="recomendation-card">Sou uma recomendação :3</div>
+      <div data-testid="0-recomendation-card">também sou uma recomendação :3</div> */}
+      <DrinksRecomendations />
 
     </div>
   );
 
   const renderDrinks = () => (
     <div>
+
       <h2 data-testid="recipe-title">{recipe.strDrink}</h2>
-      <img data-testid="recipe-photo" src={ recipe.strDrinkThumb } alt="meal" />
-      {/* <h4 data-testid="recipe-category">{recipe.strCategory}</h4> */}
-      <h4 data-testid="recipe-category">{ recipe.strAlcoholic }</h4>
+      <figure className="recipe-detail-card">
+        <img
+          className="recipe-detail-img"
+          src={ recipe.strDrinkThumb }
+          alt={ recipe.strDrink }
+          data-testid="recipe-photo"
+        />
+        <figcaption data-testid="recipe-category">
+          {recipe.strAlcoholic}
+        </figcaption>
+      </figure>
       <p data-testid="instructions">{recipe.strInstructions}</p>
 
       <ul>
         {renderIngredients()}
       </ul>
 
-      <div data-testid="recomendation-card">Oi, sou uma recomendação :3</div>
-      <div data-testid="0-recomendation-card">Oi, também sou uma recomendação :3</div>
+      {/* <div data-testid="recomendation-card">Oi, sou uma recomendação :3</div>
+      <div data-testid="0-recomendation-card">Oi, também sou uma recomendação :3</div> */}
+      <MealRecomendations />
 
     </div>
   );
 
   return (
-    <div>
+    <div className="recipe-details">
       {recipeType === '' && <h1>Carregando...</h1>}
       {recipeType === 'meal' && renderMeals() }
       {recipeType === 'drink' && renderDrinks() }
