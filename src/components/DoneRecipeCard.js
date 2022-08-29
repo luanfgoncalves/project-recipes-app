@@ -21,8 +21,12 @@ const DoneRecipeCard = ({ recipe, type, index }) => {
   } = recipe;
 
   const handleShare = () => {
-    copy(`${PAGE_URL}/${type}/${id}`);
-    setShowPopup(true);
+    try {
+      copy(`${PAGE_URL}/${type}/${id}`);
+      setShowPopup(true);
+    } catch (err) {
+      console.log(err.message);
+    }
   };
 
   return (

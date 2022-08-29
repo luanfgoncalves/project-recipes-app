@@ -17,7 +17,7 @@ describe('Teste na pagina de login', () => {
       const emailImput = screen.getByTestId("email-input")
       const senhaImput = screen.getByTestId("password-input")
       expect(emailImput).toBeInTheDocument();
-      expect(senhaImput).toBeInTheDocument();
+      expect(senhaImput).toBeInTheDocument();gi
   });
 
   it('Testa do botão ', () => {
