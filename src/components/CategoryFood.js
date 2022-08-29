@@ -2,7 +2,6 @@ import React, { useEffect, useContext } from 'react';
 import fetchCategoryFood from '../services/fetchCategoryFood';
 import { filterFood } from '../services/fetchFilter';
 import AppReceitasContext from '../context/AppReceitasContext';
-// import Food from './Food';
 
 function CategoryFood() {
   const {
@@ -10,7 +9,8 @@ function CategoryFood() {
     foodCategory,
     setFoodCategory,
     toggle,
-    setToggle } = useContext(AppReceitasContext);
+    setToggle,
+    defaultFood } = useContext(AppReceitasContext);
   const numb = 5;
   const numb2 = 12;
 
@@ -23,6 +23,7 @@ function CategoryFood() {
       setToggle(true);
     } else {
       setToggle(false);
+      setFood(defaultFood);
     }
   };
 

@@ -4,13 +4,14 @@ import fetchFood from '../services/fetchFood';
 import AppReceitasContext from '../context/AppReceitasContext';
 
 function Food() {
-  const { food, setFood } = useContext(AppReceitasContext);
+  const { food, setFood, setDefaultFood } = useContext(AppReceitasContext);
   const numbRecipes = 12;
   const { pathname } = useLocation();
 
   const apiRecipes = async () => {
     const dataFood = await fetchFood();
     setFood(dataFood.meals);
+    setDefaultFood(dataFood.meals);
   };
 
   useEffect(() => {

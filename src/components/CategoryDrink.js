@@ -9,7 +9,8 @@ function CategoryDrink() {
     drinkCategory,
     setDrinkCategory,
     toggle,
-    setToggle } = useContext(AppReceitasContext);
+    setToggle,
+    defaultDrink } = useContext(AppReceitasContext);
   const numb = 5;
   const numb2 = 12;
 
@@ -30,6 +31,7 @@ function CategoryDrink() {
       setToggle(true);
     } else {
       setToggle(false);
+      setDrink(defaultDrink);
     }
   };
 

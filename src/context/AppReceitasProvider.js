@@ -7,7 +7,9 @@ import getDrinkRecipes from '../services/drinkRecipesAPI';
 function AppReceitasProvider({ children }) {
   const [searchResult, setSearchResult] = useState([]);
   const [food, setFood] = useState([]);
+  const [defaultFood, setDefaultFood] = useState([]);
   const [drink, setDrink] = useState([]);
+  const [defaultDrink, setDefaultDrink] = useState([]);
   const [drinkCategory, setDrinkCategory] = useState([]);
   const [foodCategory, setFoodCategory] = useState([]);
   const [toggle, setToggle] = useState(false);
@@ -39,6 +41,10 @@ function AppReceitasProvider({ children }) {
     setFoodCategory,
     toggle,
     setToggle,
+    defaultFood,
+    setDefaultFood,
+    defaultDrink,
+    setDefaultDrink,
   };
 
   return (
