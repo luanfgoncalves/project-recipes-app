@@ -10,6 +10,7 @@ function AppReceitasProvider({ children }) {
   const [drink, setDrink] = useState([]);
   const [drinkCategory, setDrinkCategory] = useState([]);
   const [foodCategory, setFoodCategory] = useState([]);
+  const [toggle, setToggle] = useState(false);
 
   const getSearchResult = async (pathname, searchFilter, searchContent) => {
     if (searchFilter === 'firstLetter' && searchContent.length === 0) {
@@ -36,6 +37,8 @@ function AppReceitasProvider({ children }) {
     setDrinkCategory,
     foodCategory,
     setFoodCategory,
+    toggle,
+    setToggle,
   };
 
   return (

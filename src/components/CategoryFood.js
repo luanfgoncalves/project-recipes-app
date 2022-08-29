@@ -1,14 +1,30 @@
 import React, { useEffect, useContext } from 'react';
-// import { useLocation } from 'react-router-dom';
 import fetchCategoryFood from '../services/fetchCategoryFood';
 import { filterFood } from '../services/fetchFilter';
 import AppReceitasContext from '../context/AppReceitasContext';
+// import Food from './Food';
 
 function CategoryFood() {
-  const { setFood, foodCategory, setFoodCategory } = useContext(AppReceitasContext);
-  //   const { pathname } = useLocation();
+  const {
+    setFood,
+    foodCategory,
+    setFoodCategory,
+    toggle,
+    setToggle } = useContext(AppReceitasContext);
   const numb = 5;
   const numb2 = 12;
+
+  const foodFilter = async (category) => {
+    if (toggle === false) {
+      const dataFood = await filterFood(category.target.innerText);
+      const meals = dataFood.meals.filter((meal, index) => index < numb2);
+      console.log(meals);
+      setFood(meals);
+      setToggle(true);
+    } else {
+      setToggle(false);
+    }
+  };
 
   useEffect(() => {
     const apiCategory = async () => {
@@ -16,31 +32,24 @@ function CategoryFood() {
       setFoodCategory(dataFood.meals);
     };
     apiCategory();
-  }, [setFoodCategory]);
+  }, []);
 
-  const foodFilter = async (category) => {
-    const dataFood = await filterFood(category.target.innerText);
-    const meals = dataFood.meals.filter((food, index) => index < numb2);
-    console.log(meals);
-    setFood(meals);
-  };
+  const getFoodCategory = () => foodCategory.slice(0, numb).map((foods) => (
+    <button
+      data-testid={ `${foods.strCategory}-category-filter` }
+      type="button"
+      key={ `${foods.strCategory}` }
+      onClick={ foodFilter }
+    >
+      { foods.strCategory }
+
+    </button>
+  ));
 
   return (
-    <>
-      {
-        foodCategory.slice(0, numb).map((foods) => (
-          <button
-            data-testid={ `${foods.strCategory}-category-filter` }
-            type="button"
-            key={ `${foods.strCategory}` }
-            onClick={ (event) => foodFilter(event) }
-          >
-            { foods.strCategory }
-
-          </button>
-        ))
-      }
-    </>
+    <div>
+      { getFoodCategory() }
+    </div>
   );
 }
 
