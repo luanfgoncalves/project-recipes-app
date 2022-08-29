@@ -2,7 +2,7 @@ import React from 'react';
 import { screen, waitFor } from '@testing-library/react';
 import App from '../App';
 import AppReceitasProvider from '../context/AppReceitasProvider';
-import renderWithRouter from '../helpers/RenderWithRouter';
+import renderWithRouter from '../helpers/renderWithRouter';
 
 
 describe('Teste de Recipes', () => {
