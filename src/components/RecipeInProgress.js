@@ -54,14 +54,15 @@ const RecipeInProgress = () => {
   }, [ingredientesListOk]);
 
   useEffect(() => {
+    console.log(recipe);
     const ingredients = Object.keys(recipe).filter((e) => e.includes('strIngredient')
-      && recipe[e] !== null).map((e) => recipe[e]);
+      && recipe[e] !== null && recipe[e] !== '').map((e) => recipe[e]);
+    console.log(ingredients);
     const quantidades = ingredients.map((_e, index) => recipe[`strMeasure${index + 1}`]);
+    console.log(quantidades);
     setIngredientesList(ingredients);
     setQuantityList(quantidades);
     setChecked(ingredients.map(() => false));
-    console.log(ingredients);
-    console.log(quantidades);
   }, [recipe]);
 
   const handleIngredienteCheck = (target, ingredient, index) => {
@@ -94,6 +95,7 @@ const RecipeInProgress = () => {
 
   const renderIngredients = () => (
     <div>
+      {console.log(ingredientesList)}
       {ingredientesList.map((ingredient, index) => (
         <label
           htmlFor={ index }
