@@ -2,7 +2,7 @@ import React, { useEffect, useContext, useState } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import AppReceitasContext from '../context/AppReceitasContext';
 import { fetchMealApi, fetchDrinkApi } from '../services/fetchDrinksAndMeals';
-import FavoriteButton from './FavoriteButton';
+import FavoriteCheckbox from './FavoriteCheckbox';
 import ShareButton from './ShareButton';
 
 const RecipeInProgress = () => {
@@ -42,6 +42,11 @@ const RecipeInProgress = () => {
 
   useEffect(() => {
     fetchRecipeApi(id);
+    const type = recipeType === 'foods' ? 'meals' : 'cocktails';
+    const recoveredObj = JSON.parse(localStorage.getItem('inProgressRecipes'));
+    const savedIngredients = recoveredObj ? [...recoveredObj[type][id]] : [];
+
+    setIngredientesListOk(savedIngredients);
   }, []);
 
   useEffect(() => {
@@ -54,12 +59,9 @@ const RecipeInProgress = () => {
   }, [ingredientesListOk]);
 
   useEffect(() => {
-    console.log(recipe);
     const ingredients = Object.keys(recipe).filter((e) => e.includes('strIngredient')
       && recipe[e] !== null && recipe[e] !== '').map((e) => recipe[e]);
-    console.log(ingredients);
     const quantidades = ingredients.map((_e, index) => recipe[`strMeasure${index + 1}`]);
-    console.log(quantidades);
     setIngredientesList(ingredients);
     setQuantityList(quantidades);
     setChecked(ingredients.map(() => false));
@@ -95,21 +97,20 @@ const RecipeInProgress = () => {
 
   const renderIngredients = () => (
     <div>
-      {console.log(ingredientesList)}
       {ingredientesList.map((ingredient, index) => (
         <label
           htmlFor={ index }
           key={ index }
+          data-testid={ `${index}-ingredient-step` }
         >
           {`${ingredientesList[index]} - ${quantityList[index] || 'Quantity free'}`}
           <input
             type="checkbox"
             id={ index }
-            checked={ checked[index] }
+            checked={ ingredientesListOk.includes(ingredient) }
             onChange={ ({ target }) => handleIngredienteCheck(
               target, ingredient, index,
             ) }
-            data-testid={ `${index}-ingredient-step` }
           />
         </label>
       ))}
@@ -139,8 +140,12 @@ const RecipeInProgress = () => {
       >
         Finalizar
       </button>
-      <FavoriteButton />
-      <ShareButton />
+
+      <FavoriteCheckbox />
+      <ShareButton
+        id={ recipe.idMeal || recipe.idDrink }
+        type={ recipeType }
+      />
     </div>
   );
 
@@ -167,8 +172,12 @@ const RecipeInProgress = () => {
       >
         Finalizar
       </button>
-      <FavoriteButton />
-      <ShareButton />
+
+      <FavoriteCheckbox />
+      <ShareButton
+        id={ recipe.idMeal || recipe.idDrink }
+        type={ recipe.type === 'drink' ? 'drinks' : 'foods' }
+      />
     </div>
   );
 
