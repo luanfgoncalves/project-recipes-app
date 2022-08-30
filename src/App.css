@@ -180,3 +180,19 @@ footer {
   max-height: 98%;
   max-width: 98%;
 }
+
+/* CSS do recipeInProgress */
+.recipes-in-progress {
+  background-color: burlywood;
+}
+
+/* classe para img recipeInProgress.js */
+.rip-img {
+  height: 120px;
+  width: 140px;
+}
+
+/* classe para checkbox recipeInProgress.js */
+.strikethrough {
+  text-decoration: line-through;
+}

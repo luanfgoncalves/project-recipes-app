@@ -10,6 +10,7 @@ function AppReceitasProvider({ children }) {
   const [drink, setDrink] = useState([]);
   const [drinkCategory, setDrinkCategory] = useState([]);
   const [foodCategory, setFoodCategory] = useState([]);
+  const [favorites, setFavorites] = useState([]);
 
   const [recipe, setRecipe] = useState([]);
   const [recipeType, setRecipeType] = useState('');
@@ -43,6 +44,8 @@ function AppReceitasProvider({ children }) {
     setDrinkCategory,
     foodCategory,
     setFoodCategory,
+    favorites,
+    setFavorites,
   };
 
   return (
