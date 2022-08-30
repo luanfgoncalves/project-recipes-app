@@ -9,16 +9,21 @@ import AppReceitasContext from '../context/AppReceitasContext';
 function Recipes() {
   const { pathname } = useLocation();
   const { searchResult } = useContext(AppReceitasContext);
+  console.log(searchResult.length);
   return (
     <div>
-      <div>
-        { pathname === '/foods' ? <CategoryFood /> : <CategoryDrink /> }
-      </div>
-      <div>
-        { searchResult.length === 0 && (
-          pathname === '/foods' ? <Food /> : <Drink />
-        ) }
-      </div>
+      {
+        searchResult.length === 0 && (
+          <div>
+            <div>
+              { pathname === '/foods' ? <CategoryFood /> : <CategoryDrink /> }
+            </div>
+            <div>
+              { pathname === '/foods' ? <Food /> : <Drink /> }
+            </div>
+          </div>
+        )
+      }
     </div>
   );
 }

@@ -32,7 +32,7 @@ const Foods = () => {
           ))
         )
       }
-      {searchResult.length === 0 && <Recipes />}
+      <Recipes />
       <Footer />
     </div>
   );

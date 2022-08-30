@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import fetchFood from '../services/fetchFood';
 import AppReceitasContext from '../context/AppReceitasContext';
@@ -13,6 +13,10 @@ function Food() {
     setFood(dataFood.meals);
     setDefaultFood(dataFood.meals);
   };
+
+  useEffect(() => {
+    apiRecipes();
+  }, []);
 
   const getRecipes = () => {
     if (pathname === '/foods') {
