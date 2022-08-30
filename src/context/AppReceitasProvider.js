@@ -17,7 +17,6 @@ function AppReceitasProvider({ children }) {
   const [recipe, setRecipe] = useState([]);
   const [recipeType, setRecipeType] = useState('');
 
-
   const getSearchResult = async (pathname, searchFilter, searchContent) => {
     if (searchFilter === 'firstLetter' && searchContent.length === 0) {
       global.alert('Your search must have at least 1 (one) character');
