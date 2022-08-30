@@ -37,6 +37,12 @@ footer {
   font-size: 12px;
 }
 
+.recipe-card a {
+  display: flex;
+  flex-direction: row;
+  font-size: 12px;
+}
+
 .recipe-card img {
   height: 20px;
   width: 20px;

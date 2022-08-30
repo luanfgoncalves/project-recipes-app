@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import fetchFood from '../services/fetchFood';
 import AppReceitasContext from '../context/AppReceitasContext';
@@ -21,8 +21,8 @@ function Food() {
   const getRecipes = () => {
     if (pathname === '/foods') {
       return food.slice(0, numbRecipes).map((foods, index) => (
-        <div key={ index } data-testid={ `${index}-recipe-card` }>
-          <Link to={ `/foods/${foods.idMeal}` }>
+        <div key={ index } className="recipe-card">
+          <Link to={ `/foods/${foods.idMeal}` } data-testid={ `${index}-recipe-card` }>
             <img
               className="recipes-imgs"
               src={ foods.strMealThumb }
@@ -49,7 +49,7 @@ function Food() {
   return (
     <div>
       { clearFilter }
-      <div className="img-container">
+      <div>
         { getRecipes() }
       </div>
     </div>
