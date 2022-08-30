@@ -2,7 +2,7 @@ import React, { useEffect, useContext, useState } from 'react';
 import { useParams, useHistory, Link } from 'react-router-dom';
 import AppReceitasContext from '../context/AppReceitasContext';
 import { fetchMealApi, fetchDrinkApi } from '../services/fetchDrinksAndMeals';
-import FavoriteCheckbox from './FavoriteCheckbox';
+import FavoriteCheckbox from './FavoriteButton';
 import ShareButton from './ShareButton';
 
 const RecipeInProgress = () => {
@@ -143,7 +143,7 @@ const RecipeInProgress = () => {
         </button>
       </Link>
 
-      <FavoriteCheckbox />
+      <FavoriteCheckbox id={ id } />
       <ShareButton
         id={ recipe.idMeal || recipe.idDrink }
         page="foods"
@@ -176,7 +176,7 @@ const RecipeInProgress = () => {
         </button>
       </Link>
 
-      <FavoriteCheckbox />
+      <FavoriteCheckbox id={ id } />
       <ShareButton
         id={ recipe.idMeal || recipe.idDrink }
         page="drinks"
