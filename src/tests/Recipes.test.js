@@ -1,40 +1,58 @@
 import React from 'react';
 import { screen, waitFor } from '@testing-library/react';
+import renderWithRouter from '../helpers/RenderWithRouter';
+import Recipes from '../pages/Recipes';
+import drinkMock from '../../cypress/mocks/drinks';
 import App from '../App';
 import AppReceitasProvider from '../context/AppReceitasProvider';
 import renderWithRouter from '../helpers/renderWithRouter';
 
 
+
 describe('Teste de Recipes', () => {
-    // it('teste se aparece comidas na tela', async() => {
-    //     const { history } = renderWithRouter(<AppReceitasProvider><App /></AppReceitasProvider>);
-    //     history.push('/foods');
-
-    //     const food = screen.findByText(/poutine/i)
-    //     await waitFor(() => {
-    //     expect(food).toBeInTheDocument();
-
-    //     })
-
-    // })
-        it('Teste filtro', async () => {
-            const { history } = renderWithRouter(<AppReceitasProvider><App /></AppReceitasProvider>);
+    beforeEach(() => {
+        global.alert = jest.fn();
+    })
+    
+    it ('Teste rota foods', async () => {
+        global.fetch = jest.fn();
+        const { history } = renderWithRouter(<Recipes />);
             history.push('/foods');
-    
-            const button = screen.findByTestId("Beef-category-filter");
-            const button2 = screen.findByTestId('Breakfast-category-filter');
-            const button3 = screen.findByTestId('Chicken-category-filter');
-            const button4 = screen.findByTestId('Dessert-category-filter');
-            const button5 = screen.findByTestId('Goat-category-filter');
-            await waitFor(() => {
-            expect(button).toBeInTheDocument();
-            expect(button2).toBeInTheDocument();
-            expect(button3).toBeInTheDocument();
-            expect(button4).toBeInTheDocument();
-            expect(button5).toBeInTheDocument();
-        
+            await waitFor(() => expect(fetch).toHaveBeenCalled());
+
         });
+
+        it ('Teste rota drinks', async () => {
+            global.fetch = jest.fn();
+            const { history } = renderWithRouter(<Recipes />);
+                history.push('/drinks');
+                await waitFor(() => expect(fetch).toHaveBeenCalled());
     
+            });
+        it ('Teste da api de drinks', async () => {
+            global.fetch = jest.fn().mockResolvedValue({
+                json: jest.fn().mockResolvedValue(drinkMock),
+            });
+            const { history } = renderWithRouter(<Recipes />);
+                history.push('/drinks');
+                await waitFor(() => expect(fetch).toHaveBeenCalled());
+
+                const item = screen.getByTestId('0-recipe-card');
+                const item1 = screen.getByTestId('1-recipe-card');
+                const item2 = screen.getByTestId('2-recipe-card');
+                const item3 = screen.getByTestId('3-recipe-card');
+                expect(item).toBeInTheDocument();
+                expect(item1).toBeInTheDocument();
+                expect(item2).toBeInTheDocument();
+                expect(item3).toBeInTheDocument();
+        });
+        it ('teste botão all', async () => {
+            renderWithRouter(<Recipes />);
+            userEvent.click(screen.getByTestId('All-category-filter'));
+            await waitFor(() => {
+                expect(screen.getByText(/corba/i)).toBeInTheDocument();
+
+            })
+        })
     });
-});
     

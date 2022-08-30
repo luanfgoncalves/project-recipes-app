@@ -4,8 +4,13 @@ import { filterDrink } from '../services/fetchFilter';
 import AppReceitasContext from '../context/AppReceitasContext';
 
 function CategoryDrink() {
-  // const [drinkCategory, setDrinkCategory] = useState([]);
-  const { setDrink, drinkCategory, setDrinkCategory } = useContext(AppReceitasContext);
+  const {
+    setDrink,
+    drinkCategory,
+    setDrinkCategory,
+    toggle,
+    setToggle,
+    defaultDrink } = useContext(AppReceitasContext);
   const numb = 5;
   const numb2 = 12;
 
@@ -18,10 +23,16 @@ function CategoryDrink() {
   }, [setDrinkCategory]);
 
   const drinkFilter = async (category) => {
-    const dataDrink = await filterDrink(category.target.innerText);
-    const drinks = dataDrink.drinks.filter((drink, index) => index < numb2);
-    console.log(drinks);
-    setDrink(drinks);
+    if (toggle === false) {
+      const dataDrink = await filterDrink(category.target.innerText);
+      const drinks = dataDrink.drinks.filter((drink, index) => index < numb2);
+      console.log(drinks);
+      setDrink(drinks);
+      setToggle(true);
+    } else {
+      setToggle(false);
+      setDrink(defaultDrink);
+    }
   };
 
   return (
@@ -39,6 +50,7 @@ function CategoryDrink() {
           </button>
         ))
       }
+      ;
     </>
   );
 }

@@ -111,13 +111,13 @@ footer {
   width: 10px;
 }
 
-.divContainer {
+.div-container {
   background-color: gray;
   height: 860px;
   width: 340px;
 }
 
-.btnCategory {
+.btn-category {
   align-content: flex-end;
   align-items: flex-end;
   background-color: rgb(211, 221, 250);
@@ -126,7 +126,7 @@ footer {
   width: 339px;
 }
 
-.imgContainer {
+.img-container {
   background-color: rgb(250, 158, 158);
   height: 658px;
   width: 339px;
