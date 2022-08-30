@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import copy from 'clipboard-copy';
 
-const ShareButton = ({ type, id }) => {
+const ShareButton = ({ page, id }) => {
   const PAGE_URL = 'http://localhost:3000';
   const [showPopup, setShowPopup] = useState(false);
 
   const handleShare = () => {
     try {
-      copy(`${PAGE_URL}/${type}/${id}`);
+      console.log(page);
+      copy(`${PAGE_URL}/${page}/${id}`);
       setShowPopup(true);
     } catch (err) {
       console.log(err.message);
@@ -37,7 +38,7 @@ const ShareButton = ({ type, id }) => {
 
 ShareButton.propTypes = {
   id: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
+  page: PropTypes.string.isRequired,
 };
 
 export default ShareButton;

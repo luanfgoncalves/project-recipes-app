@@ -1,5 +1,7 @@
 import React, { useContext, useState } from 'react';
 import AppReceitasContext from '../context/AppReceitasContext';
+import blackHeartIcon from '../images/blackHeartIcon.svg';
+import whiteHearticon from '../images/whiteHeartIcon.svg';
 
 const FavoriteButton = () => {
   const {
@@ -14,19 +16,21 @@ const FavoriteButton = () => {
     setIsFavorite(!isFavorite);
     if (isFavorite) {
       setFavorites([...favorites, recipe]);
+      setIsFavorite(false);
     } else {
       setFavorites(favorites.filter((receita) => receita === recipe));
+      setIsFavorite(true);
     }
   };
 
   return (
     <div>
       <label htmlFor="favoritar">
-        Favoritar
         <input
-          type="checkbox"
-          checked={ isFavorite }
-          onChange={ handleFavoriteCheck }
+          type="image"
+          src={ isFavorite ? blackHeartIcon : whiteHearticon }
+          alt="Icone de favorito"
+          onClick={ handleFavoriteCheck }
           data-testid="favorite-btn"
           name="favoritar"
         />
