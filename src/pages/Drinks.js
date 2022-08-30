@@ -1,14 +1,19 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { Redirect } from 'react-router-dom';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import RecipeCard from '../components/RecipeCard';
 import AppReceitasContext from '../context/AppReceitasContext';
+import Recipes from './Recipes';
 
 const MAX_DISPLAYED_RECIPES = 12;
 
 const Drinks = () => {
-  const { searchResult } = useContext(AppReceitasContext);
+  const { searchResult, setSearchResult } = useContext(AppReceitasContext);
+
+  useEffect(() => {
+    setSearchResult([]);
+  }, []);
 
   return (
     <div>
@@ -27,6 +32,7 @@ const Drinks = () => {
           ))
         )
       }
+      <Recipes />
       <Footer />
     </div>
   );

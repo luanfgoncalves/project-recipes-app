@@ -21,8 +21,8 @@ function Drink() {
   const getRecipes = () => {
     if (pathname === '/drinks') {
       return drink.slice(0, numbRecipes).map((drinks, index) => (
-        <div key={ index } data-testid={ `${index}-recipe-card` }>
-          <Link to={ `/drinks/${drinks.idDrink}` }>
+        <div key={ index } className="recipe-card">
+          <Link to={ `/drinks/${drinks.idDrink}` } data-testid={ `${index}-recipe-card` }>
             <img
               className="recipes-imgs"
               src={ drinks.strDrinkThumb }
@@ -49,7 +49,7 @@ function Drink() {
   return (
     <div>
       { clearFilter }
-      <div className="img-container">
+      <div>
         { getRecipes() }
       </div>
     </div>

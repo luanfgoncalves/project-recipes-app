@@ -10,7 +10,6 @@ const Header = ({ title }) => {
 
   const handleClick = () => {
     if (displaySearchBar) {
-      console.log('false');
       setDisplaySearchBar(false);
     } else {
       setDisplaySearchBar(true);
