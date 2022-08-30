@@ -1,5 +1,5 @@
 import React, { useEffect, useContext, useState } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, Redirect, Link } from 'react-router-dom';
 import AppReceitasContext from '../context/AppReceitasContext';
 import { fetchMealApi, fetchDrinkApi } from '../services/fetchDrinksAndMeals';
 import FavoriteCheckbox from './FavoriteCheckbox';
@@ -102,6 +102,7 @@ const RecipeInProgress = () => {
           htmlFor={ index }
           key={ index }
           data-testid={ `${index}-ingredient-step` }
+          className={ ingredientesListOk.includes(ingredient) ? 'strikethrough' : '' }
         >
           {`${ingredientesList[index]} - ${quantityList[index] || 'Quantity free'}`}
           <input
@@ -131,15 +132,16 @@ const RecipeInProgress = () => {
         {renderIngredients()}
       </div>
       <p data-testid="instructions">{recipe.strInstructions}</p>
-      <button
-        type="button"
-        disabled={ disableButton }
-        // onClick={  }
-        data-testid="finish-recipe-btn"
-        name="finalizar"
-      >
-        Finalizar
-      </button>
+      <Link to="/done-recipes">
+        <button
+          type="button"
+          disabled={ disableButton }
+          data-testid="finish-recipe-btn"
+          name="finalizar"
+        >
+          Finalizar
+        </button>
+      </Link>
 
       <FavoriteCheckbox />
       <ShareButton
@@ -163,15 +165,16 @@ const RecipeInProgress = () => {
         {renderIngredients()}
       </div>
       <p data-testid="instructions">{recipe.strInstructions}</p>
-      <button
-        type="button"
-        disabled={ disableButton }
-        // onClick={  }
-        data-testid="finish-recipe-btn"
-        name="finalizar"
-      >
-        Finalizar
-      </button>
+      <Link to="/done-recipes">
+        <button
+          type="button"
+          disabled={ disableButton }
+          data-testid="finish-recipe-btn"
+          name="finalizar"
+        >
+          Finalizar
+        </button>
+      </Link>
 
       <FavoriteCheckbox />
       <ShareButton

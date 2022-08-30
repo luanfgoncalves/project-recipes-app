@@ -191,3 +191,8 @@ footer {
   height: 120px;
   width: 140px;
 }
+
+/* classe para checkbox recipeInProgress.js */
+.strikethrough {
+  text-decoration: line-through;
+}
