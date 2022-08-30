@@ -13,6 +13,10 @@ function AppReceitasProvider({ children }) {
   const [drinkCategory, setDrinkCategory] = useState([]);
   const [foodCategory, setFoodCategory] = useState([]);
   const [toggle, setToggle] = useState(false);
+  const [favorites, setFavorites] = useState([]);
+  const [recipe, setRecipe] = useState([]);
+  const [recipeType, setRecipeType] = useState('');
+
 
   const getSearchResult = async (pathname, searchFilter, searchContent) => {
     if (searchFilter === 'firstLetter' && searchContent.length === 0) {
@@ -31,6 +35,10 @@ function AppReceitasProvider({ children }) {
   const valueContext = {
     searchResult,
     getSearchResult,
+    recipe,
+    setRecipe,
+    recipeType,
+    setRecipeType,
     food,
     setFood,
     drink,
@@ -45,6 +53,8 @@ function AppReceitasProvider({ children }) {
     setDefaultFood,
     defaultDrink,
     setDefaultDrink,
+    favorites,
+    setFavorites,
   };
 
   return (

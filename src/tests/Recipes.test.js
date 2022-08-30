@@ -3,6 +3,10 @@ import { screen, waitFor } from '@testing-library/react';
 import renderWithRouter from '../helpers/RenderWithRouter';
 import Recipes from '../pages/Recipes';
 import drinkMock from '../../cypress/mocks/drinks';
+import App from '../App';
+import AppReceitasProvider from '../context/AppReceitasProvider';
+import renderWithRouter from '../helpers/renderWithRouter';
+
 
 
 describe('Teste de Recipes', () => {

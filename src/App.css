@@ -42,6 +42,17 @@ footer {
   width: 20px;
 }
 
+.done-recipe img {
+  height: 20px;
+  width: 20px;
+}
+
+.popup {
+  bottom: 50%;
+  position: fixed;
+  right: 50%;
+}
+
 /*
 #iceLeft {
   animation: clink .8s infinite ease;
@@ -121,3 +132,67 @@ footer {
   width: 339px;
 }
 
+/* CSS para RecipeDetails */
+.recipe-details {
+  height: 640px;
+  width: 360px;
+}
+
+.recipe-detail-card {
+  border: gray 2px solid;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-bottom: 10px;
+  padding: 10px;
+  width: 220px;
+}
+
+.recipe-detail-img {
+  max-height: 98%;
+  max-width: 98%;
+}
+
+/* CSS para Meals e DrinksRecomenadtions */
+.recomendation-container {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  white-space: nowrap;
+  width: auto;
+}
+
+.recomendation-card {
+  border: gray 1px solid;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  margin: auto;
+  margin-bottom: 10px;
+  margin-right: 3px;
+
+  /* max-width: fit-content; */
+  padding: 10px;
+  width: 178px;
+}
+
+.recomendation-img {
+  max-height: 98%;
+  max-width: 98%;
+}
+
+/* CSS do recipeInProgress */
+.recipes-in-progress {
+  background-color: burlywood;
+}
+
+/* classe para img recipeInProgress.js */
+.rip-img {
+  height: 120px;
+  width: 140px;
+}
+
+/* classe para checkbox recipeInProgress.js */
+.strikethrough {
+  text-decoration: line-through;
+}

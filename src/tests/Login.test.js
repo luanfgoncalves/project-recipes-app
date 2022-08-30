@@ -4,7 +4,6 @@ import userEvent from '@testing-library/user-event';
 import renderWithRouter from '../helpers/renderWithRouter';
 import App from "../App"; 
 
-
 describe('Testes relativos à página de login', () => { 
 
   test('se a página contém um heading h1 com o texto /Login/', () => {
