@@ -312,7 +312,7 @@ footer {
   margin: auto;
   margin-bottom: 10px;
   margin-left: 85px;
-  padding-bottom: 0px;
+  padding-bottom: 0%;
   width: 170px;
 }
 
@@ -441,6 +441,33 @@ footer {
   text-align: center;
   width: 130px;
   z-index: 4;
+}
+
+.done-recipe {
+  align-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 360px;
+}
+
+.done-recipe-card {
+  align-self: center;
+  background-color: white;
+  border: rgb(215, 226, 236) 1px solid;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  height: fit-content;
+  margin: auto;
+  margin-bottom: 10px;
+  margin-left: 60px;
+  padding-bottom: 0%;
+  width: 240px;
+}
+
+.share-icon {
+  margin-left: 39%;
 }
 
 /* ------- Atribuições de FavoriteRecipes.js -------- */

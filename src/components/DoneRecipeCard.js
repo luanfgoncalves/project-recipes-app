@@ -31,38 +31,43 @@ const DoneRecipeCard = ({ recipe, type, index }) => {
 
   return (
     <div key={ id } className="done-recipe">
-      <Link to={ `/${type}/${id}` }>
-        <img src={ image } alt={ name } data-testid={ `${index}-horizontal-image` } />
-        <p data-testid={ `${index}-horizontal-name` }>{name}</p>
-      </Link>
+      <figure className="done-recipe-card">
+        <Link to={ `/${type}/${id}` }>
+          <img src={ image } alt={ name } data-testid={ `${index}-horizontal-image` } />
+          <p data-testid={ `${index}-horizontal-name` }>{name}</p>
+        </Link>
 
-      <p data-testid={ `${index}-horizontal-top-text` }>
+        <p data-testid={ `${index}-horizontal-top-text` }>
+          {
+            `${nationality} - ${category} (${alcoholicOrNot})`
+          }
+        </p>
         {
-          `${nationality} - ${category} (${alcoholicOrNot})`
+          type === 'drinks' && <p>{alcoholicOrNot}</p>
         }
-      </p>
-      {
-        type === 'drinks' && <p>{alcoholicOrNot}</p>
-      }
-      <p data-testid={ `${index}-horizontal-done-date` }>{doneDate}</p>
+        <p data-testid={ `${index}-horizontal-done-date` }>{doneDate}</p>
 
-      <input
-        type="image"
-        data-testid={ `${index}-horizontal-share-btn` }
-        src={ shareIcon }
-        alt="Share the recipe"
-        id="filter-by-drink-btn"
-        onClick={ handleShare }
-      />
+        <input
+          className="share-icon"
+          type="image"
+          data-testid={ `${index}-horizontal-share-btn` }
+          src={ shareIcon }
+          alt="Share the recipe"
+          id="filter-by-drink-btn"
+          onClick={ handleShare }
+        />
 
-      <div>
-        Tags:
-        {
-          tags.map((tag, i) => (
-            <span key={ i } data-testid={ `${index}-${tag}-horizontal-tag` }>{tag}</span>
-          ))
-        }
-      </div>
+        <div>
+          Tags:
+          {
+            tags.map((tag, i) => (
+              <span key={ i } data-testid={ `${index}-${tag}-horizontal-tag` }>
+                {tag}
+              </span>
+            ))
+          }
+        </div>
+      </figure>
 
       { showPopup && (
         <div className="popup">
