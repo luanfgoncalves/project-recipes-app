@@ -7,10 +7,13 @@ import Login from './pages/Login';
 import DoneRecipes from './pages/DoneRecipes';
 import FavoriteRecipes from './pages/FavoriteRecipes';
 import Profile from './pages/Profile';
+
 import Recipes from './pages/Recipes';
 import RecipeDetails from './pages/RecipeDetails';
 import RecipeInProgress from './components/RecipeInProgress';
+
 import AppReceitasProvider from './context/AppReceitasProvider';
+
 
 function App() {
   return (

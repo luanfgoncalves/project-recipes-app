@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { useLocation, Link } from 'react-router-dom';
 import fetchFood from '../services/fetchFood';
 import AppReceitasContext from '../context/AppReceitasContext';

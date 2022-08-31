@@ -33,6 +33,7 @@ function AppReceitasProvider({ children }) {
 
   const valueContext = {
     searchResult,
+    setSearchResult,
     getSearchResult,
     recipe,
     setRecipe,
