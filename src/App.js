@@ -14,7 +14,6 @@ import RecipeInProgress from './components/RecipeInProgress';
 
 import AppReceitasProvider from './context/AppReceitasProvider';
 
-
 function App() {
   return (
     <AppReceitasProvider>
