@@ -37,6 +37,7 @@ function CategoryFood() {
 
   const getFoodCategory = () => foodCategory.slice(0, numb).map((foods) => (
     <button
+      className="filter-button"
       data-testid={ `${foods.strCategory}-category-filter` }
       type="button"
       key={ `${foods.strCategory}` }
@@ -48,7 +49,7 @@ function CategoryFood() {
   ));
 
   return (
-    <div>
+    <div className="filter-container">
       { getFoodCategory() }
     </div>
   );

@@ -4,6 +4,7 @@ import AppReceitasContext from '../context/AppReceitasContext';
 import { fetchMealApi, fetchDrinkApi } from '../services/fetchDrinksAndMeals';
 import FavoriteCheckbox from './FavoriteButton';
 import ShareButton from './ShareButton';
+import Loading from './Loading';
 
 const RecipeInProgress = () => {
   const {
@@ -102,7 +103,8 @@ const RecipeInProgress = () => {
           htmlFor={ index }
           key={ index }
           data-testid={ `${index}-ingredient-step` }
-          className={ ingredientesListOk.includes(ingredient) ? 'strikethrough' : '' }
+          className={ ingredientesListOk.includes(ingredient)
+            ? 'strikethrough' : 'checklist' }
         >
           {`${ingredientesList[index]} - ${quantityList[index] || 'Quantity free'}`}
           <input
@@ -120,73 +122,111 @@ const RecipeInProgress = () => {
 
   const renderMeals = () => (
     <div>
-      <img
-        className="rip-img"
-        data-testid="recipe-photo"
-        src={ recipe.strMealThumb }
-        alt="meal"
-      />
-      <h2 data-testid="recipe-title">{recipe.strMeal}</h2>
-      <h4 data-testid="recipe-category">{recipe.strCategory}</h4>
-      <div>
+
+      <h2 data-testid="recipe-title" className="recipe-title">
+        {recipe.strMeal}
+      </h2>
+
+      <figure className="recipe-detail-card">
+        <img
+          className="rip-img"
+          data-testid="recipe-photo"
+          src={ recipe.strMealThumb }
+          alt="meal"
+        />
+        <figcaption data-testid="recipe-category">{recipe.strCategory}</figcaption>
+      </figure>
+
+      <div className="recipe-ingredients">
+        <h3>Needed ingredients:</h3>
         {renderIngredients()}
       </div>
-      <p data-testid="instructions">{recipe.strInstructions}</p>
-      <Link to="/done-recipes">
-        <button
-          type="button"
-          disabled={ disableButton }
-          data-testid="finish-recipe-btn"
-          name="finalizar"
-        >
-          Finalizar
-        </button>
-      </Link>
 
-      <FavoriteCheckbox id={ id } />
-      <ShareButton
-        id={ recipe.idMeal || recipe.idDrink }
-        page="foods"
-      />
+      <div className="recipe-instructions">
+        <h3>How to prepare:</h3>
+        <span data-testid="instructions">
+          {recipe.strInstructions}
+        </span>
+      </div>
+
+      <div className="recipe-in-footer">
+        <Link to="/done-recipes">
+          <button
+            type="button"
+            disabled={ disableButton }
+            data-testid="finish-recipe-btn"
+            name="finalizar"
+          >
+            Finalizar
+          </button>
+        </Link>
+
+        <FavoriteCheckbox id={ id } />
+        <ShareButton
+          id={ recipe.idMeal || recipe.idDrink }
+          page="foods"
+        />
+      </div>
+
     </div>
   );
 
   const renderDrinks = () => (
     <div>
-      <img
-        className="rip-img"
-        data-testid="recipe-photo"
-        src={ recipe.strDrinkThumb }
-        alt="meal"
-      />
-      <h2 data-testid="recipe-title">{recipe.strDrink}</h2>
-      <h4 data-testid="recipe-category">{ recipe.strAlcoholic }</h4>
-      <div>
+
+      <h2 data-testid="recipe-title" className="recipe-title">
+        {recipe.strDrink}
+      </h2>
+
+      <figure className="recipe-detail-card">
+        <img
+          className="rip-img"
+          data-testid="recipe-photo"
+          src={ recipe.strDrinkThumb }
+          alt="meal"
+        />
+        <figcaption data-testid="recipe-category">
+          { recipe.strAlcoholic }
+        </figcaption>
+      </figure>
+
+      <div className="recipe-ingredients">
+        <h3>Needed ingredients:</h3>
         {renderIngredients()}
       </div>
-      <p data-testid="instructions">{recipe.strInstructions}</p>
-      <Link to="/done-recipes">
-        <button
-          type="button"
-          disabled={ disableButton }
-          data-testid="finish-recipe-btn"
-          name="finalizar"
-        >
-          Finalizar
-        </button>
-      </Link>
 
-      <FavoriteCheckbox id={ id } />
-      <ShareButton
-        id={ recipe.idMeal || recipe.idDrink }
-        page="drinks"
-      />
+      <div className="recipe-instructions">
+        <h3>How to prepare:</h3>
+        <span data-testid="instructions">
+          {recipe.strInstructions}
+        </span>
+      </div>
+
+      <div className="recipe-in-footer">
+        <Link to="/done-recipes">
+          <button
+            type="button"
+            disabled={ disableButton }
+            data-testid="finish-recipe-btn"
+            name="finalizar"
+          >
+            Finalizar
+          </button>
+        </Link>
+
+        <FavoriteCheckbox id={ id } />
+        <ShareButton
+          id={ recipe.idMeal || recipe.idDrink }
+          page="drinks"
+        />
+      </div>
+
     </div>
   );
 
   return (
     <div className="recipes-in-progress">
-      {recipeType === '' && <h1>Carregando...</h1>}
+      {recipeType === '' && <Loading />}
       {recipeType === 'meal' && renderMeals() }
       {recipeType === 'drink' && renderDrinks() }
     </div>

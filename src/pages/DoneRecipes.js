@@ -27,8 +27,9 @@ const DoneRecipes = () => {
   return (
     <div>
       <Header title="Done Recipes" />
-      <div>
+      <div className="done-recipes-container">
         <input
+          className="done-input-button"
           type="button"
           id="filter-by-all-btn"
           data-testid="filter-by-all-btn"
@@ -36,6 +37,7 @@ const DoneRecipes = () => {
           onClick={ handleFilter }
         />
         <input
+          className="done-input-button"
           type="button"
           id="filter-by-food-btn"
           data-testid="filter-by-food-btn"
@@ -43,6 +45,7 @@ const DoneRecipes = () => {
           onClick={ handleFilter }
         />
         <input
+          className="done-input-button"
           type="button"
           id="filter-by-drink-btn"
           data-testid="filter-by-drink-btn"

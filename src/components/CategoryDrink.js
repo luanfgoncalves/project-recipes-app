@@ -36,10 +36,11 @@ function CategoryDrink() {
   };
 
   return (
-    <>
+    <div className="filter-container">
       {
         drinkCategory.slice(0, numb).map((drinks) => (
           <button
+            className="filter-button"
             data-testid={ `${drinks.strCategory}-category-filter` }
             type="button"
             key={ `${drinks.strCategory}` }
@@ -51,7 +52,7 @@ function CategoryDrink() {
         ))
       }
       ;
-    </>
+    </div>
   );
 }
 

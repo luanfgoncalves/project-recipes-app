@@ -19,10 +19,11 @@ const Header = ({ title }) => {
   return (
     <header>
 
-      <h1 data-testid="page-title">{title}</h1>
+      <h5 data-testid="page-title">{title}</h5>
 
       <Link to="/profile">
         <img
+          className="profile-img"
           src={ profileIcon }
           alt="Ícone de perfil"
           data-testid="profile-top-btn"
@@ -32,6 +33,7 @@ const Header = ({ title }) => {
       {(title === 'Foods' || title === 'Drinks')
     && (
       <input
+        className="search-img"
         src={ searchIcon }
         type="image"
         onClick={ handleClick }
