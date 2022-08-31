@@ -24,7 +24,13 @@ const Profile = () => {
       >
         Favorite Recipes
       </Link>
-      <Link to="/" data-testid="profile-logout-btn">Logout</Link>
+      <Link
+        to="/"
+        data-testid="profile-logout-btn"
+        onClick={ () => localStorage.clear() }
+      >
+        Logout
+      </Link>
       <Footer />
     </div>
   );

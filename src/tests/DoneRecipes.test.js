@@ -37,7 +37,7 @@ describe('Realiza os testes referentes à página /done-recipes', () => {
   }); */
 
   afterAll(() => {
-    localStorage.removeItem('doneRecipes');
+    localStorage.clear();
   });
 
   it('Verifica se os botões de filtro são renderizados', () => {
