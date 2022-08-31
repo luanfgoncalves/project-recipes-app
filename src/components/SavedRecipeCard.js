@@ -1,13 +1,16 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import copy from 'clipboard-copy';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import shareIcon from '../images/shareIcon.svg';
+import FavoriteButton from './FavoriteButton';
 
 const PAGE_URL = 'http://localhost:3000';
 
-const DoneRecipeCard = ({ recipe, type, index }) => {
+const SavedRecipeCard = ({ recipe, type, index }) => {
   const [showPopup, setShowPopup] = useState(false);
+
+  const { pathname } = useLocation();
 
   const {
     id,
@@ -45,7 +48,7 @@ const DoneRecipeCard = ({ recipe, type, index }) => {
         {
           type === 'drinks' && <p>{alcoholicOrNot}</p>
         }
-        <p data-testid={ `${index}-horizontal-done-date` }>{doneDate}</p>
+        {doneDate && <p data-testid={ `${index}-horizontal-done-date` }>{doneDate}</p>}
 
         <input
           className="share-icon"
@@ -57,16 +60,20 @@ const DoneRecipeCard = ({ recipe, type, index }) => {
           onClick={ handleShare }
         />
 
-        <div>
-          Tags:
-          {
-            tags.map((tag, i) => (
-              <span key={ i } data-testid={ `${index}-${tag}-horizontal-tag` }>
-                {tag}
-              </span>
-            ))
-          }
-        </div>
+        {pathname === '/favorite-recipes' && <FavoriteButton id={ id } index={ index } />}
+
+        {tags && (
+          <div>
+            Tags:
+            {
+              tags.map((tag, i) => (
+                <span key={ i } data-testid={ `${index}-${tag}-horizontal-tag` }>
+                  {tag}
+                </span>
+              ))
+            }
+          </div>
+        )}
       </figure>
 
       { showPopup && (
@@ -79,7 +86,14 @@ const DoneRecipeCard = ({ recipe, type, index }) => {
   );
 };
 
-DoneRecipeCard.propTypes = {
+SavedRecipeCard.defaultProps = {
+  recipe: {
+    doneDate: '',
+    tags: [],
+  },
+};
+
+SavedRecipeCard.propTypes = {
   recipe: PropTypes.shape({
     id: PropTypes.string.isRequired,
     type: PropTypes.string.isRequired,
@@ -88,11 +102,11 @@ DoneRecipeCard.propTypes = {
     alcoholicOrNot: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
     image: PropTypes.string.isRequired,
-    doneDate: PropTypes.string.isRequired,
+    doneDate: PropTypes.string,
     tags: PropTypes.arrayOf(PropTypes.string),
-  }).isRequired,
+  }),
   type: PropTypes.string.isRequired,
   index: PropTypes.number.isRequired,
 };
 
-export default DoneRecipeCard;
+export default SavedRecipeCard;

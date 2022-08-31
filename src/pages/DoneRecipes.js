@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import DoneRecipeCard from '../components/DoneRecipeCard';
+import SavedRecipeCard from '../components/SavedRecipeCard';
 import Header from '../components/Header';
 
 const DoneRecipes = () => {
@@ -55,7 +55,7 @@ const DoneRecipes = () => {
       </div>
       {
         filteredRecipes.map((recipe, index) => (
-          <DoneRecipeCard
+          <SavedRecipeCard
             recipe={ recipe }
             key={ recipe.id }
             index={ index }

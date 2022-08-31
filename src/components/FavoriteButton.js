@@ -5,10 +5,10 @@ import AppReceitasContext from '../context/AppReceitasContext';
 import blackHeartIcon from '../images/blackHeartIcon.svg';
 import whiteHearticon from '../images/whiteHeartIcon.svg';
 
-const FavoriteButton = ({ id }) => {
+const FavoriteButton = ({ id, index }) => {
   const {
     recipe,
-
+    setFavorites,
   } = useContext(AppReceitasContext);
 
   const [isFavorite, setIsFavorite] = useState(false);
@@ -23,11 +23,11 @@ const FavoriteButton = ({ id }) => {
     setIsFavorite(isFav);
   }, []);
 
-  useEffect(() => {
+  const handleFavoriteCheck = () => {
     const recoveredList = JSON.parse(localStorage.getItem('favoriteRecipes'));
     const favoritesList = recoveredList ? [...recoveredList] : [];
 
-    if (isFavorite) {
+    if (!isFavorite) {
       const isFoods = pathname.includes('foods');
       const favoriteObj = {
         id: isFoods ? recipe.idMeal : recipe.idDrink,
@@ -41,19 +41,13 @@ const FavoriteButton = ({ id }) => {
       localStorage.setItem('favoriteRecipes', JSON.stringify(
         [...favoritesList, { ...favoriteObj }],
       ));
+      setFavorites([...favoritesList, { ...favoriteObj }]);
     } else {
       const newFavoritesList = favoritesList.filter((elem) => elem.id !== id);
       localStorage.setItem('favoriteRecipes', JSON.stringify([...newFavoritesList]));
+      setFavorites([...newFavoritesList]);
     }
-  }, [isFavorite]);
-
-  const handleFavoriteCheck = () => {
     setIsFavorite(!isFavorite);
-    if (isFavorite) {
-      setIsFavorite(false);
-    } else {
-      setIsFavorite(true);
-    }
   };
 
   return (
@@ -64,7 +58,11 @@ const FavoriteButton = ({ id }) => {
           src={ isFavorite ? blackHeartIcon : whiteHearticon }
           alt="Icone de favorito"
           onClick={ handleFavoriteCheck }
-          data-testid="favorite-btn"
+          data-testid={ pathname === '/favorite-recipes' ? (
+            `${index}-horizontal-favorite-btn`
+          ) : (
+            'favorite-btn'
+          ) }
           name="favoritar"
         />
       </label>
@@ -72,8 +70,13 @@ const FavoriteButton = ({ id }) => {
   );
 };
 
+FavoriteButton.defaultProps = {
+  index: 0,
+};
+
 FavoriteButton.propTypes = {
   id: PropTypes.string.isRequired,
+  index: PropTypes.number,
 };
 
 export default FavoriteButton;
