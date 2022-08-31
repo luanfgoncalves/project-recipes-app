@@ -6,6 +6,7 @@ import AppReceitasContext from '../context/AppReceitasContext';
 import { fetchDrinkApi, fetchMealApi } from '../services/fetchDrinksAndMeals';
 import MealRecomendations from '../components/MealsRecomendations';
 import DrinksRecomendations from '../components/DrinkRecomendations';
+import Loading from '../components/Loading';
 
 const RecipeDetails = () => {
   const {
@@ -54,29 +55,19 @@ const RecipeDetails = () => {
   const ingredients = Object.keys(recipe).filter((e) => e.includes('strIngredient'));
 
   const renderIngredients = () => (
-    ingredients.filter((key) => recipe[key] !== null)
+    ingredients.filter((key) => recipe[key] !== null && recipe[key] !== '')
       .map((key, index) => (
         <li key={ key } data-testid={ `${index}-ingredient-name-and-measure` }>
           { `${recipe[key]} - ${recipe[`strMeasure${index + 1}`]}` }
         </li>
       )));
 
-  // const cardNumber = 6;
-  // const renderMealRecomendations = () => (
-  //   ata.slice(0, maxCards).map((recomendation, index) => (
-  //     <div key={ index }>
-  //       {index <= cardNumber && (
-  //         <div data-testid={ `${index}-recomendation-card` }>
-  //           <img src={ recomendation.strDrinkThumb } alt={ recomendation.strDrink } />
-  //           <p data-testid={ `${index}-recomendation-title` }>{recomendation.strDrink}</p>
-  //         </div>)}
-  //     </div>
-  //   )));
-
   const renderMeals = () => (
     <div>
 
-      <h2 data-testid="recipe-title">{recipe.strMeal}</h2>
+      <h2 data-testid="recipe-title" className="recipe-title">
+        {recipe.strMeal}
+      </h2>
       <figure className="recipe-detail-card">
         <img
           className="recipe-detail-img"
@@ -88,23 +79,29 @@ const RecipeDetails = () => {
           {recipe.strCategory}
         </figcaption>
       </figure>
-      <p data-testid="instructions">{recipe.strInstructions}</p>
+
+      <div className="recipe-instructions">
+        <h3>How to prepare:</h3>
+        <span data-testid="instructions">
+          {recipe.strInstructions}
+        </span>
+      </div>
 
       <iframe
         data-testid="video"
         title={ recipe.strMeal }
         width="400"
         height="315"
-        // src={ recipe.strYoutube }
         src={ String(recipe.strYoutube).replace('watch?v=', 'embed/') }
       />
 
-      <ul>
-        {renderIngredients()}
-      </ul>
+      <div className="recipe-ingredients">
+        <h3>Needed ingredients:</h3>
+        <ul className="recipe-details-ul">
+          {renderIngredients()}
+        </ul>
+      </div>
 
-      {/* <div data-testid="recomendation-card">Sou uma recomendação :3</div>
-      <div data-testid="0-recomendation-card">também sou uma recomendação :3</div> */}
       <DrinksRecomendations />
 
     </div>
@@ -113,7 +110,10 @@ const RecipeDetails = () => {
   const renderDrinks = () => (
     <div>
 
-      <h2 data-testid="recipe-title">{recipe.strDrink}</h2>
+      <h2 data-testid="recipe-title" className="recipe-title">
+        {recipe.strDrink}
+      </h2>
+
       <figure className="recipe-detail-card">
         <img
           className="recipe-detail-img"
@@ -125,22 +125,29 @@ const RecipeDetails = () => {
           {recipe.strAlcoholic}
         </figcaption>
       </figure>
-      <p data-testid="instructions">{recipe.strInstructions}</p>
 
-      <ul>
-        {renderIngredients()}
-      </ul>
+      <div className="recipe-instructions">
+        <h3>How to prepare:</h3>
+        <span data-testid="instructions">
+          {recipe.strInstructions}
+        </span>
+      </div>
 
-      {/* <div data-testid="recomendation-card">Oi, sou uma recomendação :3</div>
-      <div data-testid="0-recomendation-card">Oi, também sou uma recomendação :3</div> */}
+      <div className="recipe-ingredients">
+        <h3>Needed ingredients:</h3>
+        <ul className="recipe-details-ul">
+          {renderIngredients()}
+        </ul>
+      </div>
+
       <MealRecomendations />
 
     </div>
   );
 
   return (
-    <div className="recipe-details">
-      {recipeType === '' && <h1>Carregando...</h1>}
+    <div>
+      {recipeType === '' && <Loading />}
       {recipeType === 'meal' && renderMeals() }
       {recipeType === 'drink' && renderDrinks() }
     </div>

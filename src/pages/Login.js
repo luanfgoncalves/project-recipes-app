@@ -35,10 +35,11 @@ function Login() {
   };
 
   return (
-    <div>
-      <h1>Login</h1>
-      <form>
+    <div className="login-screen">
+      <form className="login-form">
+        <h1>Login</h1>
         <input
+          className="login-input"
           type="email"
           name="email"
           value={ email }
@@ -47,6 +48,7 @@ function Login() {
           onChange={ handleChange }
         />
         <input
+          className="login-input"
           type="password"
           name="password"
           value={ password }
@@ -55,6 +57,7 @@ function Login() {
           onChange={ handleChange }
         />
         <button
+          class-name="login-button"
           type="submit"
           data-testid="login-submit-btn"
           disabled={ disabledButton }

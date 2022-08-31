@@ -22,9 +22,11 @@ const SearchBar = () => {
   };
 
   return (
-    <div>
+    <div className="search-bar">
       <label htmlFor="search-input">
         <input
+          placeholder="Search"
+          className="search-input"
           type="text"
           data-testid="search-input"
           id="search-input"
@@ -32,10 +34,11 @@ const SearchBar = () => {
           onChange={ handleChange }
         />
       </label>
-      <div>
-        <label htmlFor="ingredient-search-radio">
+      <div className="search-radio-container">
+        <label htmlFor="ingredient-search-radio" className="search-radio-label">
           Ingredient
           <input
+            className="search-radio"
             type="radio"
             id="ingredient-search-radio"
             data-testid="ingredient-search-radio"
@@ -44,9 +47,10 @@ const SearchBar = () => {
             onClick={ handleClick }
           />
         </label>
-        <label htmlFor="name-search-radio">
+        <label htmlFor="name-search-radio" className="search-radio-label">
           Name
           <input
+            className="search-radio"
             type="radio"
             id="name-search-radio"
             data-testid="name-search-radio"
@@ -55,9 +59,10 @@ const SearchBar = () => {
             onClick={ handleClick }
           />
         </label>
-        <label htmlFor="first-letter-search-radio">
+        <label htmlFor="first-letter-search-radio" className="search-radio-label">
           First Letter
           <input
+            className="search-radio"
             type="radio"
             id="first-letter-search-radio"
             data-testid="first-letter-search-radio"
@@ -67,6 +72,7 @@ const SearchBar = () => {
           />
         </label>
         <input
+          className="search-input-button"
           type="button"
           data-testid="exec-search-btn"
           value="Search"

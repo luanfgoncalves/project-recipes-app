@@ -1,0 +1,472 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;600&family=Montserrat&display=swap') ;
+
+.classe-que-corrige-bug-do-lint-pqp-trybe {
+  margin: 0;
+}
+
+* {
+  font-family: Roboto , Epilogue , sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+*::-webkit-scrollbar {
+  display: none;
+}
+
+.app {
+  align-content: center;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  height: 640px;
+  text-align: center;
+  width: 360px;
+}
+
+body {
+  align-self: center;
+  background-color: #a1b2c2;
+  box-sizing: border-box;
+  display: flex;
+  height: 100vh;
+  justify-content: center;
+  width: 100vw;
+  z-index: -1;
+}
+
+button {
+  background-color: #34aeeb;
+  border-color: #9ddffd;
+  border-radius: 12px;
+  box-shadow: 0 5px 16px 0;
+  color: white;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin: 4px;
+}
+
+button:hover {
+  box-shadow: var(--shadow-2);
+  filter: brightness(110%);
+  transform: scale(1.1);
+}
+
+button:active {
+  box-shadow: var(--shadow-3);
+}
+
+button:disabled {
+  color: white;
+  cursor: wait;
+  opacity: 0.5;
+}
+
+input {
+  border-color: #389bd4;
+  border-radius: 12px;
+  font-size: 1 rem;
+  height: 25px;
+  margin-bottom: 2px;
+  padding: 0.4rem 0.95rem;
+  width: 15vw;
+}
+
+img {
+  border-radius: 6px;
+  max-height: 100%;
+  max-width: 100%;
+}
+
+figure {
+  background-color: azure;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px 0;
+  padding-bottom: 22px;
+}
+
+figcaption {
+  text-align: center;
+}
+
+iframe {
+  height: 400px;
+  width: 315px;
+}
+
+/* ------ Atribuições de Login.js ------ */
+.login-screen {
+  align-items: center;
+  align-self: center;
+  background: linear-gradient(45deg, #2b69b5 20%, #79c3ed 100%);
+  background-color: transparent;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
+.login-form {
+  align-items: center;
+  align-self: center;
+  background-color: rgba(226, 223, 223, 0.87);
+  border-radius: 10px;
+  box-shadow: 0 5px 20px 0;
+  display: flex;
+  flex-direction: column;
+  height: 320px;
+  justify-content: center;
+  width: 280px;
+}
+
+.login-input {
+  margin-bottom: 3px;
+  margin-top: 2px;
+  width: 65%;
+}
+
+.login-button {
+  margin-bottom: 3px;
+  margin-top: 2px;
+  width: 65%;
+}
+
+/* ------ Atribuições de Header.js ------ */
+header {
+  background-color: rgb(0, 95, 184);
+  box-shadow: 0 5px 6px 0;
+  color: white;
+  display: flex;
+  height: 27px;
+  justify-content: space-around;
+  margin-bottom: 5px;
+  position: sticky;
+  top: 0;
+  width: 360px;
+  z-index: 1;
+}
+
+.profile-img {
+  height: 18px;
+  left: 0;
+  margin-left: 8px;
+  margin-top: 5px;
+  position: absolute;
+  top: 0;
+  width: 18px;
+}
+
+.search-img {
+  height: 25px;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 40px;
+}
+
+/* ------ Atribuições de footer ------ OK */
+footer {
+  align-self: center;
+  background-color: rgb(168, 224, 250);
+  border-top: #005a86;
+  bottom: 0;
+  box-shadow: 0 5px 6px 0;
+  height: 30px;
+  left: 0;
+  line-height: 100px;
+  position: fixed;
+  right: 0;
+  text-align: center;
+  width: 360px;
+}
+
+.footer-img {
+  display: flex;
+  height: 25px;
+  justify-content: space-evenly;
+  margin-bottom: 35px;
+  margin-top: -35px;
+}
+
+/* ------ Atribuições de Recipes.js ------ OK */
+.filter-container {
+  align-self: center;
+  display: flex;
+  height: 34px;
+  justify-content: space-around;
+  margin-bottom: 10px;
+  margin-left: -3px;
+  margin-top: 7px;
+  width: 360px;
+  z-index: 1;
+}
+
+.filter-button {
+  width: 18%;
+}
+
+.filter-button-all {
+  margin-bottom: 15px;
+  width: 18%;
+}
+
+.recipes-container {
+  display: grid;
+  grid-template-columns: 110px 110px 110px;
+  grid-template-rows: 110px 110px 110px;
+  overflow: hidden;
+}
+
+.recipe-figure {
+  background-color: white;
+  border: rgb(215, 226, 236) 1px solid;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  margin: auto;
+  margin-bottom: 10px;
+  margin-left: 22px;
+  padding-bottom: 20px;
+  width: 90px;
+}
+
+/* ------ Atribuições de SearchBar.js ------ OK */
+.search-bar {
+  align-self: center;
+  background-color: rgb(235, 241, 250);
+  border: solid #49ade7 1px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
+  box-shadow: 0 6px 6px 0;
+  display: flex;
+  flex-direction: column;
+  height: 240px;
+  justify-content: space-around;
+  margin-top: -5px;
+  padding-top: 20px;
+  width: 360px;
+  z-index: 2;
+}
+
+.search-radio-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  justify-content: space-around;
+}
+
+.search-input {
+  color: black;
+  padding-left: 95px;
+  width: 240px;
+  z-index: 4;
+}
+
+.search-radio-label {
+  align-content: center;
+  align-items: center;
+  color: black;
+  display: flex;
+  height: 30px;
+  justify-content: center;
+  width: 320px;
+  z-index: 3;
+}
+
+.search-input-button {
+  background-color: #34aeeb;
+  border-color: #9ddffd;
+  border-radius: 12px;
+  box-shadow: 0 5px 16px 0;
+  color: white;
+  display: flex;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin: 4px;
+  padding: 0%;
+  padding-left: 38px;
+  text-align: center;
+  width: 130px;
+  z-index: 4;
+}
+
+/* CSS para RecipeDetails */
+.recipe-title {
+  align-content: center;
+  background-color: rgb(0, 95, 184);
+  box-shadow: 0 6px 18px 0;
+  color: white;
+  display: flex;
+  height: 36px;
+  justify-content: center;
+  width: 360px;
+}
+
+.recipe-detail-card {
+  align-content: center;
+  align-self: center;
+  border: rgb(190, 229, 252) 2px solid;
+  display: flex;
+  flex-direction: column;
+  height: 320px;
+  margin-bottom: 10px;
+  width: 360px;
+}
+
+.recipe-instructions {
+  background-color: white;
+  border: solid grey 2px;
+  box-shadow: 0 3px 3px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 12px;
+  margin-left: 10px;
+  padding: 3%;
+  padding-bottom: 15px;
+  width: 340px;
+}
+
+.recipe-ingredients {
+  background-color: white;
+  border: solid grey 2px;
+  box-shadow: 0 3px 3px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-bottom: 12px;
+  margin-left: 10px;
+  padding: 3%;
+  padding-bottom: 15px;
+  width: 340px;
+}
+
+.recipe-details-ul {
+  list-style-type: none;
+}
+
+.recomendation-container {
+  display: flex;
+  flex-direction: row;
+  overflow-x: scroll;
+  white-space: nowrap;
+  width: auto;
+}
+
+.recomendation-card {
+  border: gray 1px solid;
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  margin: auto;
+  margin-bottom: 10px;
+  margin-right: 3px;
+  padding: 10px;
+  width: 178px;
+}
+
+/* Css referente a RecipesInProgress */
+.strikethrough {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  text-decoration: line-through;
+  width: 100%;
+}
+
+.checklist {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.recipe-in-footer {
+  align-items: flex-start;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+/* ------- Atribuições de DoneRecipes ------- */
+.done-recipes-container {
+  align-self: center;
+  display: flex;
+  height: 34px;
+  justify-content: space-around;
+  margin-bottom: 10px;
+  margin-left: -3px;
+  margin-top: 7px;
+  width: 360px;
+  z-index: 1;
+}
+
+.done-input-button {
+  background-color: #34aeeb;
+  border-color: #9ddffd;
+  border-radius: 12px;
+  box-shadow: 0 5px 16px 0;
+  color: white;
+  display: flex;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin: 4px;
+  padding: 0%;
+  padding-left: 38px;
+  text-align: center;
+  width: 130px;
+  z-index: 4;
+}
+
+/* ------- Atribuições de FavoriteRecipes.js -------- */
+
+/* Css referente ao componente de loading */
+.loading {
+  align-items: center;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  margin-top: 50%;
+}
+
+.loading-text {
+  color: #64bad1;
+}
+
+.lds-circle {
+  display: inline-block;
+  transform: translateZ(1px);
+}
+
+.lds-circle > div {
+  animation: lds-circle 2.4s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+  background: #fcf;
+  border-radius: 50%;
+  display: inline-block;
+  height: 64px;
+  margin: 8px;
+  width: 64px;
+}
+
+@keyframes lds-circle {
+
+  0%, 100% {
+    animation-timing-function: cubic-bezier(0.5, 0, 1, 0.5);
+  }
+
+  0% {
+    transform: rotateY(0deg);
+  }
+
+  50% {
+    animation-timing-function: cubic-bezier(0, 0.5, 0.5, 1);
+    transform: rotateY(1800deg);
+  }
+
+  100% {
+    transform: rotateY(3600deg);
+  }
+}
+
+/* Referencia do loading: https://loading.io/css/ */

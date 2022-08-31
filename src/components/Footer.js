@@ -7,9 +7,8 @@ function Footer() {
   return (
     <footer
       data-testid="footer"
-      className="footer"
     >
-      <div>
+      <div className="footer-img">
         <Link to="/drinks">
           <img
             data-testid="drinks-bottom-btn"

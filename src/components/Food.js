@@ -23,13 +23,16 @@ function Food() {
       return food.slice(0, numbRecipes).map((foods, index) => (
         <div key={ index } data-testid={ `${index}-recipe-card` }>
           <Link to={ `/foods/${foods.idMeal}` }>
-            <img
-              className="recipes-imgs"
-              src={ foods.strMealThumb }
-              alt=""
-              data-testid={ `${index}-card-img` }
-            />
-            <p data-testid={ `${index}-card-name` }>{ foods.strMeal }</p>
+            <figure className="recipe-figure">
+              <img
+                src={ foods.strMealThumb }
+                alt=""
+                data-testid={ `${index}-card-img` }
+              />
+              <figcaption data-testid={ `${index}-card-name` }>
+                { foods.strMeal }
+              </figcaption>
+            </figure>
           </Link>
         </div>
       ));
@@ -38,6 +41,7 @@ function Food() {
 
   const clearFilter = (
     <button
+      className="filter-button-all"
       type="button"
       data-testid="All-category-filter"
       onClick={ () => apiRecipes() }
@@ -49,7 +53,7 @@ function Food() {
   return (
     <div>
       { clearFilter }
-      <div className="img-container">
+      <div className="recipes-container">
         { getRecipes() }
       </div>
     </div>

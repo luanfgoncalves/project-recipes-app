@@ -23,13 +23,16 @@ function Drink() {
       return drink.slice(0, numbRecipes).map((drinks, index) => (
         <div key={ index } data-testid={ `${index}-recipe-card` }>
           <Link to={ `/drinks/${drinks.idDrink}` }>
-            <img
-              className="recipes-imgs"
-              src={ drinks.strDrinkThumb }
-              alt=""
-              data-testid={ `${index}-card-img` }
-            />
-            <p data-testid={ `${index}-card-name` }>{ drinks.strDrink }</p>
+            <figure className="recipe-figure">
+              <img
+                src={ drinks.strDrinkThumb }
+                alt=""
+                data-testid={ `${index}-card-img` }
+              />
+              <figcaption data-testid={ `${index}-card-name` }>
+                { drinks.strDrink }
+              </figcaption>
+            </figure>
           </Link>
         </div>
       ));
@@ -38,6 +41,7 @@ function Drink() {
 
   const clearFilter = (
     <button
+      className="filter-button-all"
       type="button"
       data-testid="All-category-filter"
       onClick={ () => apiRecipes() }
@@ -49,7 +53,7 @@ function Drink() {
   return (
     <div>
       { clearFilter }
-      <div className="img-container">
+      <div className="recipes-container">
         { getRecipes() }
       </div>
     </div>
