@@ -8,8 +8,6 @@ const FavoriteRecipes = () => {
 
   const { favorites, setFavorites } = useContext(AppReceitasContext);
 
-  console.log(favorites);
-
   useEffect(() => {
     setFavorites(JSON.parse(localStorage.getItem('favoriteRecipes') || '[]'));
   }, []);
