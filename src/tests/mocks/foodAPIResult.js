@@ -1,65 +1,54 @@
-export const singleResult = {
-  meals :[
+export const mockApiDrink =  {
+    drinks: [
     {
-    strMeal: "Beef Banh Mi Bowls with Sriracha Mayo, Carrot & Pickled Cucumber",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/z0ageb1583189517.jpg",
-    idMeal: "52997"
-    },
-  ],
-  status: 200,
-};
-
-export const multipleResult = {
-  meals: [
-    {
-    strMeal: "Beef Banh Mi Bowls with Sriracha Mayo, Carrot & Pickled Cucumber",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/z0ageb1583189517.jpg",
-    idMeal: "52997"
-    },
-    {
-    strMeal: "Chicken Congee",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/1529446352.jpg",
-    idMeal: "52956"
-    },
-    {
-    strMeal: "Egyptian Fatteh",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/rlwcc51598734603.jpg",
-    idMeal: "53031"
-    },
-    {
-    strMeal: "Gołąbki (cabbage roll)",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/q8sp3j1593349686.jpg",
-    idMeal: "53021"
-    },
-    {
-    strMeal: "Kedgeree",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/utxqpt1511639216.jpg",
-    idMeal: "52887"
-    },
-    {
-    strMeal: "Koshari",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/4er7mj1598733193.jpg",
-    idMeal: "53027"
-    },
-    {
-    strMeal: "Nasi lemak",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/wai9bw1619788844.jpg",
-    idMeal: "53051"
-    },
-    {
-    strMeal: "Salmon Prawn Risotto",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/xxrxux1503070723.jpg",
-    idMeal: "52823"
-    },
-    {
-    strMeal: "Seri muka kuih",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/6ut2og1619790195.jpg",
-    idMeal: "53054"
-    },
-    {
-    strMeal: "Stuffed Lamb Tomatoes",
-    strMealThumb: "https://www.themealdb.com/images/media/meals/u55lbp1585564013.jpg",
-    idMeal: "53008"
-    }
-  ]
-};
+    idDrink: "11007",
+    strDrink: "Margarita",
+    strDrinkAlternate: null,
+    strTags: "IBA,ContemporaryClassic",
+    strVideo: null,
+    strCategory: "Ordinary Drink",
+    strIBA: "Contemporary Classics",
+    strAlcoholic: "Alcoholic",
+    strGlass: "Cocktail glass",
+    strInstructions: "Rub the rim of the glass with the lime slice to make the salt stick to it. Take care to moisten only the outer rim and sprinkle the salt on it. The salt should present to the lips of the imbiber and never mix into the cocktail. Shake the other ingredients with ice, then carefully pour into the glass.",
+    strInstructionsES: null,
+    strInstructionsDE: "Reiben Sie den Rand des Glases mit der Limettenscheibe, damit das Salz daran haftet. Achten Sie darauf, dass nur der äußere Rand angefeuchtet wird und streuen Sie das Salz darauf. Das Salz sollte sich auf den Lippen des Genießers befinden und niemals in den Cocktail einmischen. Die anderen Zutaten mit Eis schütteln und vorsichtig in das Glas geben.",
+    strInstructionsFR: null,
+    strDrinkThumb: "https://www.thecocktaildb.com/images/media/drink/5noda61589575158.jpg",
+    strIngredient1: "Tequila",
+    strIngredient2: "Triple sec",
+    strIngredient3: "Lime juice",
+    strIngredient4: "Salt",
+    strIngredient5: null,
+    strIngredient6: null,
+    strIngredient7: null,
+    strIngredient8: null,
+    strIngredient9: null,
+    strIngredient10: null,
+    strIngredient11: null,
+    strIngredient12: null,
+    strIngredient13: null,
+    strIngredient14: null,
+    strIngredient15: null,
+    strMeasure1: "1 1/2 oz ",
+    strMeasure2: "1/2 oz ",
+    strMeasure3: "1 oz ",
+    strMeasure4: null,
+    strMeasure5: null,
+    strMeasure6: null,
+    strMeasure7: null,
+    strMeasure8: null,
+    strMeasure9: null,
+    strMeasure10: null,
+    strMeasure11: null,
+    strMeasure12: null,
+    strMeasure13: null,
+    strMeasure14: null,
+    strMeasure15: null,
+    strImageSource: "https://commons.wikimedia.org/wiki/File:Klassiche_Margarita.jpg",
+    strImageAttribution: "Cocktailmarler",
+    strCreativeCommonsConfirmed: "Yes",
+    dateModified: "2015-08-18 14:42:59",
+  },
+]
+}
